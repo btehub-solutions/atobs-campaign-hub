@@ -1,6 +1,7 @@
 import Navbar from "@/components/nav/Navbar";
 import Hero from "@/components/sections/Hero";
 import Achievements from "@/components/sections/Achievements";
+import ResultsAnalytics from "@/components/sections/ResultsAnalytics";
 import WardTracker from "@/components/sections/WardTracker";
 import MediaPress from "@/components/sections/MediaPress";
 import Gallery from "@/components/sections/Gallery";
@@ -13,6 +14,7 @@ const Index = () => {
       <Navbar />
       <Hero />
       <Achievements />
+      <ResultsAnalytics />
       <WardTracker />
       <MediaPress />
       <Gallery />
