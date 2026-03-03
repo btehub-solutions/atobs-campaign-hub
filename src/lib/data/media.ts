@@ -19,7 +19,7 @@ export const mediaItems: MediaItem[] = [
     title: "APC Chieftain Funds 91 Surgeries Across Ogun Communities",
     source: "Punch Newspapers",
     category: "Healthcare",
-    excerpt: "In a landmark healthcare intervention, ATOBS sponsored life-saving surgeries for 91 families, earning widespread praise from constituents.",
+    excerpt: "In a landmark healthcare intervention, LADEF sponsored life-saving surgeries for 91 families, earning widespread praise from constituents.",
     date: "2025-06-22",
   },
   {
@@ -37,7 +37,7 @@ export const mediaItems: MediaItem[] = [
     date: "2025-11-02",
   },
   {
-    title: "Youth Groups Endorse ATOBS for 2026 House of Assembly Race",
+    title: "Youth Groups Endorse LADEF for 2026 House of Assembly Race",
     source: "Premium Times",
     category: "Politics",
     excerpt: "Multiple youth organizations across Abeokuta South have declared support for Hon. Atobatele, citing his track record of grassroots impact.",
