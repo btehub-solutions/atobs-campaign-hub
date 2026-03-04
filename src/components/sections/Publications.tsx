@@ -2,15 +2,7 @@ import { motion } from "framer-motion";
 import { FileText, Download } from "lucide-react";
 
 // The PDF assets
-const magazines = [
-  {
-    title: "LADEF Magazine (Part 1)",
-    description: "Pages 1 to 25. An in-depth look at Hon. Lukmon Atobatele's early community initiatives and the foundation of his vision for Abeokuta South.",
-    href: "/PDF/MAGAZINE 3 Pg1- Pg25 JPEG SENT TO ATOBS.pdf",
-    coverColor: "from-primary/[0.15] to-primary/[0.05]",
-    issue: "Vol 3.1"
-  }
-];
+const magazines: any[] = [];
 
 // Clean, Professional Document Card Component
 const DocumentCard = ({ magazine, index }: { magazine: typeof magazines[0], index: number }) => {
