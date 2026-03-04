@@ -56,7 +56,7 @@ const StatCard = ({ card, index }: { card: MetricCard; index: number }) => {
       onMouseMove={handleMouseMove}
       initial={{ opacity: 0, y: 25, scale: 0.97 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true }}
+      viewport={{ once: true, margin: "-50px" }}
       transition={{ delay: index * 0.05, duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
       className={`${card.span} bento-card group relative overflow-hidden`}
     >
@@ -103,7 +103,7 @@ const ProgressCard = ({ card, index }: { card: MetricCard; index: number }) => {
       ref={ref}
       initial={{ opacity: 0, y: 25, scale: 0.97 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true }}
+      viewport={{ once: true, margin: "-50px" }}
       transition={{ delay: index * 0.05, duration: 0.5 }}
       className={`${card.span} bento-card group`}
     >
@@ -138,7 +138,7 @@ const HighlightCard = ({ card, index }: { card: MetricCard; index: number }) => 
     <motion.div
       initial={{ opacity: 0, y: 25, scale: 0.97 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true }}
+      viewport={{ once: true, margin: "-50px" }}
       transition={{ delay: index * 0.05, duration: 0.5 }}
       className={`${card.span} bento-card group gradient-border`}
     >
@@ -160,7 +160,7 @@ const ChartCard = ({ card, index }: { card: MetricCard; index: number }) => {
     <motion.div
       initial={{ opacity: 0, y: 25, scale: 0.97 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true }}
+      viewport={{ once: true, margin: "-50px" }}
       transition={{ delay: index * 0.05, duration: 0.5 }}
       className={`${card.span} bento-card group`}
     >
@@ -225,7 +225,7 @@ const QuoteCard = ({ card, index }: { card: MetricCard; index: number }) => (
   <motion.div
     initial={{ opacity: 0, y: 25, scale: 0.97 }}
     whileInView={{ opacity: 1, y: 0, scale: 1 }}
-    viewport={{ once: true }}
+    viewport={{ once: true, margin: "-50px" }}
     transition={{ delay: index * 0.05, duration: 0.5 }}
     className={`${card.span} bento-card gradient-border overflow-hidden`}
   >
@@ -278,7 +278,7 @@ const ResultsAnalytics = () => {
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="text-center mb-4"
         >
@@ -295,7 +295,7 @@ const ResultsAnalytics = () => {
         <motion.div
           initial={{ scaleX: 0 }}
           whileInView={{ scaleX: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="w-20 h-0.5 bg-gradient-to-r from-primary to-accent mx-auto mb-16 origin-left"
         />
@@ -309,7 +309,7 @@ const ResultsAnalytics = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-50px" }}
           transition={{ delay: 0.3 }}
           className="text-center mt-16"
         >

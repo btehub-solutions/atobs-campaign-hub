@@ -1,18 +1,20 @@
+import { lazy, Suspense } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import Navbar from "@/components/nav/Navbar";
 import Hero from "@/components/sections/Hero";
-import About from "@/components/sections/About";
-import Achievements from "@/components/sections/Achievements";
-import ResultsAnalytics from "@/components/sections/ResultsAnalytics";
-import WardTracker from "@/components/sections/WardTracker";
-import MediaPress from "@/components/sections/MediaPress";
-import Testimonials from "@/components/sections/Testimonials";
-import Gallery from "@/components/sections/Gallery";
-import Contact from "@/components/sections/Contact";
-import Footer from "@/components/footer/Footer";
 
-import Publications from "@/components/sections/Publications";
-import AIAssistant from "@/components/ui/AIAssistant";
+// Lazy load all sections below the fold for extreme performance
+const About = lazy(() => import("@/components/sections/About"));
+const Achievements = lazy(() => import("@/components/sections/Achievements"));
+const ResultsAnalytics = lazy(() => import("@/components/sections/ResultsAnalytics"));
+const WardTracker = lazy(() => import("@/components/sections/WardTracker"));
+const MediaPress = lazy(() => import("@/components/sections/MediaPress"));
+const Testimonials = lazy(() => import("@/components/sections/Testimonials"));
+const Gallery = lazy(() => import("@/components/sections/Gallery"));
+const Contact = lazy(() => import("@/components/sections/Contact"));
+const Footer = lazy(() => import("@/components/footer/Footer"));
+const Publications = lazy(() => import("@/components/sections/Publications"));
+const AIAssistant = lazy(() => import("@/components/ui/AIAssistant"));
 
 const Index = () => {
   const { scrollYProgress } = useScroll();
@@ -49,19 +51,19 @@ const Index = () => {
         <motion.div 
           animate={{ x: [0, 50, 0], y: [0, -50, 0] }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-primary/10 blur-[120px] mix-blend-multiply opacity-60" 
+          className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-primary/10 blur-[120px] mix-blend-multiply opacity-60 will-change-transform transform-gpu" 
         />
         
         <motion.div 
           animate={{ x: [0, -30, 0], y: [0, 40, 0] }}
           transition={{ duration: 15, repeat: Infinity, ease: "linear", delay: 5 }}
-          className="absolute top-[30%] right-[-5%] w-[40vw] h-[40vw] rounded-full bg-accent/15 blur-[130px] mix-blend-multiply opacity-50" 
+          className="absolute top-[30%] right-[-5%] w-[40vw] h-[40vw] rounded-full bg-accent/15 blur-[130px] mix-blend-multiply opacity-50 will-change-transform transform-gpu" 
         />
 
         <motion.div 
           animate={{ x: [0, 60, 0], scale: [1, 1.1, 1] }}
           transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-[-20%] left-[20%] w-[60vw] h-[40vw] rounded-full bg-[hsl(210_40%_85%)] blur-[150px] mix-blend-multiply opacity-70" 
+          className="absolute bottom-[-20%] left-[20%] w-[60vw] h-[40vw] rounded-full bg-[hsl(210_40%_85%)] blur-[150px] mix-blend-multiply opacity-70 will-change-transform transform-gpu" 
         />
         
         {/* Animated Cinematic Grain replacing static noise */}
@@ -69,7 +71,7 @@ const Index = () => {
 
         {/* Parallax Rock Watermark - Extremely subtle, blended into the artistic background */}
         <motion.div 
-          className="absolute inset-0 mix-blend-color-burn opacity-[0.02]"
+          className="absolute inset-0 mix-blend-color-burn opacity-[0.02] will-change-transform transform-gpu"
           style={{ 
             y: rockY,
             backgroundImage: "url('/parallax/rock.png')",
@@ -84,19 +86,24 @@ const Index = () => {
       <div className="relative z-10">
         <Navbar />
         <Hero />
-        <About />
-        <Publications />
-        <Achievements />
-        <ResultsAnalytics />
-        <WardTracker />
-        <MediaPress />
-        <Testimonials />
-        <Gallery />
-        <Contact />
-        <Footer />
+        
+        <Suspense fallback={<div className="min-h-[50vh] flex items-center justify-center opacity-50"><div className="w-8 h-8 rounded-full border-4 border-primary border-t-transparent animate-spin"/></div>}>
+          <About />
+          <Publications />
+          <Achievements />
+          <ResultsAnalytics />
+          <WardTracker />
+          <MediaPress />
+          <Testimonials />
+          <Gallery />
+          <Contact />
+          <Footer />
+        </Suspense>
       </div>
 
-      <AIAssistant />
+      <Suspense fallback={null}>
+        <AIAssistant />
+      </Suspense>
     </div>
   );
 };

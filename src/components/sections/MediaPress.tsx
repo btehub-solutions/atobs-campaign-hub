@@ -21,7 +21,7 @@ const MediaPress = () => {
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
             <span className="section-badge mb-6 inline-flex">Press Coverage</span>
@@ -36,7 +36,7 @@ const MediaPress = () => {
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
             transition={{ delay: 0.3 }}
           >
             <button className="btn-pill-outline text-xs">
@@ -53,7 +53,7 @@ const MediaPress = () => {
               key={item.title}
               initial={{ opacity: 0, y: 25, scale: 0.97 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "-50px" }}
               transition={{ delay: i * 0.05, duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
               className={`bento-card group cursor-pointer flex flex-col ${
                 i === 0 ? "md:col-span-2 lg:col-span-2" : ""

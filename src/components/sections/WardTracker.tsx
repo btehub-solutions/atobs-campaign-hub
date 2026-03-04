@@ -48,7 +48,7 @@ const WardTracker = () => {
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="text-center mb-14"
         >
@@ -65,7 +65,7 @@ const WardTracker = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-50px" }}
           transition={{ delay: 0.1, duration: 0.5 }}
           className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-10"
         >

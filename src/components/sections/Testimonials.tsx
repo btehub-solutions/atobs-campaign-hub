@@ -54,7 +54,7 @@ const Testimonials = () => {
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="text-center mb-16"
         >
@@ -71,7 +71,7 @@ const Testimonials = () => {
         <div className="max-w-4xl mx-auto">
           <div className="relative">
             {/* Large quote card */}
-            <div className="bento-card gradient-border !p-0 overflow-hidden min-h-[320px] sm:min-h-[280px] bg-white">
+            <div className="bento-card gradient-border !p-0 overflow-hidden min-h-[320px] sm:min-h-[280px]">
               {/* Background decorations */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.03] via-transparent to-accent/[0.02] rounded-2xl" />
               <Quote className="absolute top-8 right-8 text-primary/[0.08]" size={80} />
@@ -178,9 +178,9 @@ const Testimonials = () => {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-50px" }}
           transition={{ delay: 0.2, duration: 0.6 }}
-          className="mt-24 max-w-4xl mx-auto rounded-3xl overflow-hidden border border-border/40 shadow-2xl relative bg-card"
+          className="mt-24 max-w-4xl mx-auto rounded-3xl overflow-hidden border border-border/40 shadow-2xl relative bg-card/40 backdrop-blur-xl"
         >
           <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.05] to-accent/[0.05] pointer-events-none" />
           <div className="aspect-video relative bg-muted/30 group">
@@ -248,7 +248,7 @@ const Testimonials = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-50px" }}
           transition={{ delay: 0.3, duration: 0.6 }}
           className="flex flex-wrap justify-center gap-6 sm:gap-10 mt-16 pt-10 border-t border-border/20"
         >
