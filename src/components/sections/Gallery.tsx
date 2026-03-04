@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Camera, Users, HeartHandshake, GraduationCap, Landmark, Megaphone, TreePine, Sparkles } from "lucide-react";
 
-const galleryItems = [
+const galleryItems: any[] = [
   { 
     id: 1,
     icon: Users, 
@@ -9,9 +9,8 @@ const galleryItems = [
     title: "Community Engagement", 
     desc: "Direct dialogue and empowerment programs reaching every ward.", 
     className: "md:col-span-2 md:row-span-2",
-    image: "/hero-purple.jpg",
-    gradient: "from-black/80 via-black/20 to-transparent",
-    hasImage: true
+    gradient: "from-primary/10 to-transparent",
+    hasImage: false
   },
   { 
     id: 2,
@@ -40,9 +39,8 @@ const galleryItems = [
     title: "Leadership Summit", 
     desc: "Strategic forums to chart a course for sustainable development.", 
     className: "md:col-span-2 row-span-1",
-    image: "/candidate-hero-1.jpg",
-    gradient: "from-black/90 via-black/40 to-transparent",
-    hasImage: true
+    gradient: "from-accent/10 to-transparent",
+    hasImage: false
   },
   { 
     id: 5,
@@ -71,9 +69,8 @@ const galleryItems = [
     title: "Massive Distributions", 
     desc: "Delivering core democratic dividends to the grassroots.", 
     className: "md:col-span-2 md:row-span-2",
-    image: "/hero-green.jpg",
-    gradient: "from-black/80 via-black/30 to-transparent",
-    hasImage: true
+    gradient: "from-primary/10 to-transparent",
+    hasImage: false
   },
 ];
 

@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageSquare, X, Send, Sparkles, User, Bot, Loader2, ChevronRight } from "lucide-react";
+import { MessageSquare, X, Send, Sparkles, User, Bot, Loader2, ChevronRight, RefreshCcw } from "lucide-react";
 
 import { Message, generateAIResponse } from "@/lib/ai-engine";
 
@@ -25,12 +25,23 @@ const AIAssistant = () => {
   const [inputValue, setInputValue] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
+  // Clear initial tooltip after 5 seconds
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsInitialLoad(false);
-    }, 3000);
+    }, 5000);
     return () => clearTimeout(timer);
   }, []);
+
+  // Clear hover tooltip after 5 seconds (especially useful for mobile tap-to-hover)
+  useEffect(() => {
+    if (isHovered) {
+      const timer = setTimeout(() => {
+        setIsHovered(false);
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [isHovered]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -115,8 +126,8 @@ const AIAssistant = () => {
             <div className="flex items-center justify-between border-b border-border/20 bg-gradient-to-r from-primary/[0.08] to-accent/[0.05] p-4 relative overflow-hidden">
                <div className="absolute inset-0 bg-[url('/parallax/rock.png')] opacity-5 bg-cover bg-center pointer-events-none mix-blend-overlay" />
               <div className="flex items-center gap-3 relative z-10">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border-[1.5px] border-primary/30 shadow-sm bg-primary/5 text-primary">
-                  <Bot size={20} />
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border-[1.5px] border-primary/30 shadow-sm bg-white">
+                  <img src="/ladef-logo-trimmed.png" alt="LADEF" className="h-full w-full object-cover" />
                 </div>
                 <div>
                   <h3 className="font-heading text-sm font-semibold text-foreground">LADEF Assistant</h3>
@@ -129,12 +140,22 @@ const AIAssistant = () => {
                   </div>
                 </div>
               </div>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="rounded-full p-2 text-muted-foreground transition-colors hover:bg-black/5 hover:text-foreground relative z-10"
-              >
-                <X size={18} />
-              </button>
+              <div className="flex items-center gap-1 relative z-10">
+                <button
+                  onClick={() => setMessages([INITIAL_MESSAGE])}
+                  className="rounded-full p-2 text-muted-foreground transition-colors hover:bg-black/5 hover:text-foreground"
+                  title="Restart Chat"
+                >
+                  <RefreshCcw size={16} />
+                </button>
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="rounded-full p-2 text-muted-foreground transition-colors hover:bg-black/5 hover:text-foreground"
+                  title="Close Assistant"
+                >
+                  <X size={18} />
+                </button>
+              </div>
             </div>
 
             {/* Chat Area */}
@@ -146,14 +167,14 @@ const AIAssistant = () => {
                   animate={{ opacity: 1, y: 0 }}
                   className={`flex items-start gap-3 ${msg.role === "user" ? "flex-row-reverse" : "flex-row"}`}
                 >
-                  <div className={`flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full shadow-sm ${msg.role === "user" ? "bg-accent/10 text-accent" : "border border-border/50 bg-primary/5 text-primary"}`}>
-                    {msg.role === "user" ? <User size={14} /> : <Bot size={16} />}
+                  <div className={`flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full shadow-sm border border-border/50 ${msg.role === "user" ? "bg-primary/5 text-primary" : "bg-white"}`}>
+                    {msg.role === "user" ? <User size={14} /> : <img src="/ladef-logo-trimmed.png" alt="LADEF" className="h-full w-full object-cover" />}
                   </div>
                   
-                  <div className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-sm ${
+                  <div className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-sm bg-muted/50 text-foreground border border-border/30 ${
                     msg.role === "user" 
-                      ? "bg-primary text-white shadow-md rounded-tr-sm" 
-                      : "bg-muted/50 text-foreground rounded-tl-sm border border-border/30"
+                      ? "rounded-tr-sm" 
+                      : "rounded-tl-sm"
                   }`}>
                     {msg.isTyping ? (
                       <div className="flex items-center h-5 gap-1 pt-1 opacity-70">

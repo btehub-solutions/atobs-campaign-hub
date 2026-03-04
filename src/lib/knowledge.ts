@@ -14,8 +14,8 @@ export const knowledgeBase: KnowledgeItem[] = [
   },
   {
     category: "about",
-    keywords: ["who", "lukmon", "atobatele", "adebutu", "oladipupo", "background", "profile", "about", "bio"],
-    content: "Hon. Lukmon Atobatele (and Hon. Oladipupo Adebutu as Principal) stand as a beacon of progressive leadership in Ogun State. Through LADEF, they have pioneered initiatives that stimulate grassroots economic empowerment and provide life-changing opportunities.",
+    keywords: ["who", "lukmon", "atobatele", "background", "profile", "about", "bio", "principal"],
+    content: "Hon. Lukmon Atobatele stands as a beacon of progressive leadership in Ogun State. Through LADEF, he has pioneered initiatives that stimulate grassroots economic empowerment and provide life-changing opportunities.",
     actionLink: { label: "Read Biography", url: "#about" }
   },
   {

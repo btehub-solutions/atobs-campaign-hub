@@ -28,7 +28,7 @@ const About = () => {
               
               <img 
                 src="/candidate-hero-5.jpg" 
-                alt="Hon. Oladipupo Adebutu" 
+                alt="Hon. Lukmon Olajide Atobatele" 
                 className="w-full h-full object-cover object-top scale-[1.02] group-hover:scale-105 transition-transform duration-1000 ease-out"
                 loading="lazy"
                 decoding="async"
@@ -51,8 +51,8 @@ const About = () => {
                 <Award className="text-primary w-6 h-6 sm:w-7 sm:h-7" />
               </div>
               <div className="pr-2">
-                <p className="text-3xl sm:text-4xl font-stats font-bold text-foreground leading-none">30+</p>
-                <p className="text-[10px] sm:text-xs text-muted-foreground font-semibold uppercase tracking-widest mt-1">Years of Impact</p>
+                <p className="text-3xl sm:text-4xl font-stats font-bold text-foreground leading-none">20+</p>
+                <p className="text-[10px] sm:text-xs text-muted-foreground font-semibold uppercase tracking-widest mt-1">Years of Experience</p>
               </div>
             </motion.div>
           </motion.div>
@@ -76,14 +76,14 @@ const About = () => {
             
             <div className="space-y-6 text-muted-foreground text-base sm:text-lg leading-[1.8] mb-10">
               <p>
-                <span className="text-foreground font-semibold">Hon. Oladipupo Adebutu</span> stands as a beacon of progressive leadership and unwavering dedication to the people of Ogun State. With a distinguished legacy forged in public service, agricultural innovation, and massive philanthropic investments, he represents the vanguard of transformative governance.
+                <span className="text-foreground font-semibold">Hon. Lukmon Atobatele</span> stands as a beacon of progressive leadership and unwavering dedication to the people of Ogun State. With over two decades of corporate experience and comprehensive legislative engagement, he represents a vanguard of transformative governance and grassroots-responsive leadership.
               </p>
               <p>
-                As the visionary behind the <span className="text-foreground font-semibold">Ladi Adebutu Democratic Foundation (LADEF)</span>, he has pioneered comprehensive initiatives that stimulate grassroots economic empowerment, deliver essential infrastructure, and provide life-changing educational opportunities to countless families across the nation.
+                As the visionary behind the <span className="text-foreground font-semibold">Lukmon Atobatele Development Foundation (LADEF)</span>, he has pioneered vital initiatives that stimulate massive economic empowerment, deliver critical healthcare interventions, and provide life-changing capacity-building opportunities to countless youth and families.
               </p>
               <blockquote className="border-l-[3px] border-primary/50 pl-6 my-8 py-2">
                 <p className="font-display text-xl sm:text-2xl italic text-foreground/90 font-medium leading-relaxed">
-                  "Leadership isn't merely about holding a position; it is about profound, undeniable impact. We must build a society where prosperity is a shared reality, and no citizen is left behind."
+                  "As his projects continue to expand in scope and impact, Hon. Atobatele's story stands as a testament to what purposeful leadership, driven by service and accountability, can achieve at the grassroots and beyond."
                 </p>
               </blockquote>
             </div>

@@ -90,9 +90,9 @@ const Hero = () => {
         <div className="absolute inset-0 bg-white/40 backdrop-blur-[1px] pointer-events-none" />
 
         {/* Mobile Candidate Background Layer (Behind text) */}
-        <div className="absolute inset-0 lg:hidden pointer-events-none select-none mix-blend-multiply opacity-20">
+        <div className="absolute inset-0 lg:hidden pointer-events-none select-none opacity-[0.35]">
           <div 
-            className="absolute inset-0 bg-cover bg-top grayscale"
+            className="absolute inset-0 bg-cover bg-top grayscale-[50%]"
             style={{ 
               backgroundImage: `url('/candidate-hero-1.jpg')`,
               maskImage: 'linear-gradient(to bottom, black 15%, transparent 85%)', 

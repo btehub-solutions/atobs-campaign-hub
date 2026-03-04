@@ -76,10 +76,10 @@ const StatCard = ({ card, index }: { card: MetricCard; index: number }) => {
           </div>
         )}
         <p className="text-muted-foreground text-[10px] font-semibold uppercase tracking-[0.2em] mb-3">{card.label}</p>
-        <span className="font-stats text-5xl lg:text-6xl text-foreground block leading-none">
-          {displayValue}
-          {card.suffix && <span className="text-accent text-3xl ml-1">{card.suffix}</span>}
-        </span>
+        <div className="font-stats text-4xl sm:text-5xl lg:text-6xl text-foreground flex flex-wrap items-baseline gap-1 leading-none">
+          <span>{displayValue}</span>
+          {card.suffix && <span className="text-accent text-2xl sm:text-3xl">{card.suffix}</span>}
+        </div>
         {card.trend && (
           <p className="text-primary text-[11px] mt-4 flex items-center gap-2 font-medium">
             <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
@@ -115,9 +115,10 @@ const ProgressCard = ({ card, index }: { card: MetricCard; index: number }) => {
           </div>
         )}
         <p className="text-muted-foreground text-[10px] font-semibold uppercase tracking-[0.2em] mb-2">{card.label}</p>
-        <span className="font-stats text-5xl text-foreground block leading-none mb-1">
-          {card.value}{card.suffix}
-        </span>
+        <div className="font-stats text-4xl sm:text-5xl text-foreground flex flex-wrap items-baseline gap-1 leading-none mb-1 text-balance">
+          <span>{card.value}</span>
+          {card.suffix && <span className="text-accent text-xl sm:text-3xl">{card.suffix}</span>}
+        </div>
         {card.description && <p className="text-muted-foreground text-[11px] mb-5">{card.description}</p>}
         <div className="w-full h-1 rounded-full bg-muted/60 overflow-hidden">
           <motion.div
@@ -144,7 +145,7 @@ const HighlightCard = ({ card, index }: { card: MetricCard; index: number }) => 
     >
       <div className="relative z-10 flex flex-col h-full justify-center">
         <p className="text-muted-foreground text-[10px] font-semibold uppercase tracking-[0.2em] mb-3">{card.label}</p>
-        <span className="font-stats text-7xl sm:text-8xl text-[#C5A54B] block leading-none mb-4">{card.value}</span>
+        <span className="font-stats text-6xl sm:text-7xl lg:text-8xl text-[#C5A54B] block leading-none mb-4">{card.value}</span>
         {card.description && (
           <p className="text-muted-foreground text-[13px] leading-[1.7]">{card.description}</p>
         )}
