@@ -38,9 +38,9 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-10 mb-8 md:mb-12">
             {/* Brand */}
             <div className="md:col-span-1">
-              <div className="mb-4 sm:mb-5 relative h-20 sm:h-40 w-full flex items-center">
+              <div className="mb-4 sm:mb-5 relative h-16 sm:h-20 w-full flex items-center">
                 <img 
-                  src="/ladef-logo.png" 
+                  src="/ladef-logo-trimmed.png" 
                   alt="LADEF Logo" 
                   className="absolute left-0 h-full w-auto max-w-none object-contain origin-left drop-shadow-[0_2px_8px_rgba(0,0,0,0.3)]"
                 />

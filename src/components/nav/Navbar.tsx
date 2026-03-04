@@ -82,9 +82,9 @@ const Navbar = () => {
           >
             <div className="flex items-center">
               <img 
-                src="/ladef-logo.png" 
+                src="/ladef-logo-trimmed.png" 
                 alt="LADEF Logo" 
-                className="h-24 sm:h-28 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_2px_10px_rgba(0,0,0,0.35)] mt-2"
+                className="h-10 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_2px_10px_rgba(0,0,0,0.35)]"
               />
             </div>
           </a>
