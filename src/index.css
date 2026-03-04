@@ -6,48 +6,55 @@
 
 @layer base {
   :root {
-    --background: 0 0% 2%;
-    --foreground: 0 0% 98%;
+    /* Artistry Blended Canvas - Soft warm off-white, moving away from plain digital white */
+    --background: 40 20% 98%;
+    
+    /* Deep Rich Typography */
+    --foreground: 220 30% 12%;
 
-    --card: 0 0% 5%;
-    --card-foreground: 0 0% 98%;
+    /* Translucent Cards */
+    --card: 0 0% 100%;
+    --card-foreground: 220 30% 12%;
 
-    --popover: 0 0% 5%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 9%;
 
+    /* Shopify-like Green Accent remains */
     --primary: 152 62% 42%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 8%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
 
-    --muted: 0 0% 10%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
 
+    /* Warm Gold Accent */
     --accent: 45 80% 58%;
-    --accent-foreground: 0 0% 2%;
+    --accent-foreground: 0 0% 9%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 12%;
-    --input: 0 0% 12%;
+    /* Light Borders */
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
     --ring: 152 62% 42%;
 
     --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 2%;
-    --sidebar-foreground: 0 0% 98%;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 0 0% 9%;
     --sidebar-primary: 152 62% 42%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 8%;
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 0 0% 12%;
+    --sidebar-accent: 210 40% 96.1%;
+    --sidebar-accent-foreground: 222.2 47.4% 11.2%;
+    --sidebar-border: 214.3 31.8% 91.4%;
     --sidebar-ring: 152 62% 42%;
 
     --gold: 45 80% 58%;
-    --gold-foreground: 0 0% 2%;
-    --surface-elevated: 0 0% 7%;
+    --gold-foreground: 0 0% 9%;
+    --surface-elevated: 0 0% 100%;
   }
 }
 
@@ -63,7 +70,10 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply text-foreground antialiased;
+    /* Base soft gradient to prevent plain flat colors */
+    background: linear-gradient(180deg, hsl(40 20% 98%), hsl(210 20% 98%));
+    background-attachment: fixed;
     font-family: "Inter", system-ui, -apple-system, sans-serif;
     overflow-x: hidden;
     letter-spacing: -0.01em;
@@ -76,18 +86,18 @@
 
   ::selection {
     background: hsl(152 62% 42% / 0.25);
-    color: white;
+    color: hsl(0 0% 9%);
   }
 
   /* Ultra-minimal scrollbar */
   ::-webkit-scrollbar {
-    width: 5px;
+    width: 6px;
   }
   ::-webkit-scrollbar-track {
     background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: hsl(0 0% 20%);
+    background: hsl(0 0% 80%);
     border-radius: 10px;
   }
   ::-webkit-scrollbar-thumb:hover {
@@ -121,10 +131,10 @@
   }
 
   /* ─── Premium Text Hierarchy ─── */
-  h1 { color: #E5E7EB !important; }
-  h2 { color: #F3F4F6 !important; }
-  h3, h4 { color: #E5E7EB !important; }
-  p { color: #9CA3AF !important; }
+  h1 { color: hsl(var(--foreground)) !important; }
+  h2 { color: hsl(var(--foreground)) !important; }
+  h3, h4 { color: hsl(var(--foreground)) !important; }
+  p { color: hsl(var(--muted-foreground)) !important; }
   
   .section-badge, 
   .text-\[10px\], 
@@ -132,25 +142,28 @@
   .text-\[13px\],
   .text-xs.text-muted-foreground, 
   .text-sm.text-muted-foreground {
-    color: #6B7280 !important;
+    color: hsl(var(--muted-foreground)) !important;
   }
 
   /* ─── Shopify-style Glass Card ─── */
   .glass-card {
-    background: hsl(0 0% 5% / 0.7);
-    backdrop-filter: blur(40px) saturate(180%);
-    -webkit-backdrop-filter: blur(40px) saturate(180%);
-    border: 1px solid hsl(0 0% 15% / 0.5);
-    box-shadow: 0 8px 32px hsl(0 0% 0% / 0.4), inset 0 1px 0 hsl(0 0% 100% / 0.03);
+    background: linear-gradient(145deg, hsl(0 0% 100% / 0.7), hsl(0 0% 100% / 0.3));
+    backdrop-filter: blur(40px) saturate(150%);
+    -webkit-backdrop-filter: blur(40px) saturate(150%);
+    border: 1px solid hsl(0 0% 100% / 0.6);
+    box-shadow: 
+      0 8px 32px hsl(0 0% 0% / 0.04), 
+      inset 0 1px 0 hsl(0 0% 100% / 0.8),
+      inset 0 -1px 0 hsl(0 0% 0% / 0.02);
   }
 
   /* ─── Premium Glow Effects ─── */
   .glow-primary {
-    box-shadow: 0 0 80px -20px hsl(152 62% 42% / 0.15), 0 0 30px -10px hsl(152 62% 42% / 0.1);
+    box-shadow: 0 0 60px -20px hsl(152 62% 42% / 0.25), 0 0 30px -10px hsl(152 62% 42% / 0.15);
   }
 
   .glow-accent {
-    box-shadow: 0 0 80px -20px hsl(45 80% 58% / 0.15), 0 0 30px -10px hsl(45 80% 58% / 0.1);
+    box-shadow: 0 0 60px -20px hsl(45 80% 58% / 0.25), 0 0 30px -10px hsl(45 80% 58% / 0.15);
   }
 
   /* ─── Animated Gradient Border ─── */
@@ -164,7 +177,7 @@
     inset: 0;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(135deg, hsl(152 62% 42% / 0.4), hsl(45 80% 58% / 0.2), hsl(152 62% 42% / 0.1));
+    background: linear-gradient(135deg, hsl(152 62% 42% / 0.6), hsl(45 80% 58% / 0.4), hsl(152 62% 42% / 0.2));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
@@ -174,65 +187,74 @@
 
   /* ─── Shopify-level Buttons ─── */
   .btn-pill {
-    @apply inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full font-medium text-sm tracking-wide transition-all duration-300 relative overflow-hidden;
+    @apply inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full font-[600] text-sm tracking-wide transition-all duration-300 relative overflow-hidden;
   }
 
   .btn-pill-primary {
     @apply btn-pill text-primary-foreground;
-    background: linear-gradient(135deg, hsl(152 62% 42%) 0%, hsl(152 62% 36%) 100%);
-    box-shadow: 0 2px 8px hsl(152 62% 42% / 0.2), inset 0 1px 0 hsl(0 0% 100% / 0.1);
+    background: hsl(152 62% 42%);
+    box-shadow: 0 4px 14px hsl(152 62% 42% / 0.25), inset 0 1px 0 hsl(0 0% 100% / 0.2);
   }
   .btn-pill-primary:hover {
-    box-shadow: 0 8px 40px hsl(152 62% 42% / 0.35), inset 0 1px 0 hsl(0 0% 100% / 0.15);
+    box-shadow: 0 6px 20px hsl(152 62% 42% / 0.35), inset 0 1px 0 hsl(0 0% 100% / 0.2);
     transform: translateY(-2px);
-    filter: brightness(1.08);
+    background: hsl(152 62% 38%);
   }
   .btn-pill-primary:active {
     transform: translateY(0);
+    box-shadow: 0 2px 8px hsl(152 62% 42% / 0.2);
   }
 
   .btn-pill-outline {
-    @apply btn-pill border text-foreground;
-    border-color: hsl(0 0% 20%);
-    background: transparent;
+    @apply btn-pill text-foreground bg-white border;
+    border-color: hsl(0 0% 85%);
+    box-shadow: 0 1px 3px hsl(0 0% 0% / 0.05);
   }
   .btn-pill-outline:hover {
-    border-color: hsl(0 0% 35%);
-    background: hsl(0 0% 100% / 0.03);
+    border-color: hsl(0 0% 70%);
+    background: hsl(0 0% 98%);
     transform: translateY(-2px);
-    box-shadow: 0 4px 20px hsl(0 0% 0% / 0.3);
+    box-shadow: 0 4px 12px hsl(0 0% 0% / 0.08);
   }
 
   .btn-pill-accent {
     @apply btn-pill text-accent-foreground;
-    background: linear-gradient(135deg, hsl(45 80% 58%) 0%, hsl(45 80% 48%) 100%);
-    box-shadow: 0 2px 8px hsl(45 80% 58% / 0.2);
+    background: hsl(45 80% 58%);
+    box-shadow: 0 4px 14px hsl(45 80% 58% / 0.25);
   }
   .btn-pill-accent:hover {
-    box-shadow: 0 8px 40px hsl(45 80% 58% / 0.35);
+    box-shadow: 0 6px 20px hsl(45 80% 58% / 0.35);
     transform: translateY(-2px);
+    background: hsl(45 80% 54%);
   }
 
   /* ─── Section Badge ─── */
   .section-badge {
-    @apply inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full text-[11px] font-semibold uppercase tracking-[0.2em];
-    background: hsl(152 62% 42% / 0.08);
-    color: hsl(152 62% 52%);
+    @apply inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-[0.2em];
+    background: hsl(152 62% 42% / 0.1);
+    color: hsl(152 62% 42%);
     border: 1px solid hsl(152 62% 42% / 0.15);
-    backdrop-filter: blur(8px);
   }
 
   /* ─── Bento Card (Shopify-level) ─── */
   .bento-card {
     @apply relative rounded-2xl p-7 overflow-hidden;
-    background: hsl(0 0% 5%);
-    border: 1px solid hsl(0 0% 10%);
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    background: linear-gradient(145deg, hsl(0 0% 100% / 0.8), hsl(0 0% 100% / 0.4));
+    backdrop-filter: blur(30px) saturate(150%);
+    -webkit-backdrop-filter: blur(30px) saturate(150%);
+    border: 1px solid hsl(0 0% 100% / 0.8);
+    box-shadow: 
+      0 4px 20px hsl(0 0% 0% / 0.03),
+      inset 0 1px 0 hsl(0 0% 100% / 0.9);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .bento-card:hover {
-    border-color: hsl(0 0% 16%);
-    transform: translateY(-3px);
-    box-shadow: 0 20px 60px hsl(0 0% 0% / 0.4), 0 0 0 1px hsl(0 0% 16%);
+    border-color: hsl(0 0% 100% / 1);
+    transform: translateY(-4px) scale(1.005);
+    box-shadow: 
+      0 12px 30px hsl(0 0% 0% / 0.08),
+      0 0 0 1px hsl(152 62% 42% / 0.1),
+      inset 0 1px 0 hsl(0 0% 100% / 1);
   }
 
   /* ─── Gold Underline ─── */
@@ -300,7 +322,22 @@
   /* ─── Section Divider ─── */
   .section-divider {
     @apply w-full h-px;
-    background: linear-gradient(90deg, transparent, hsl(0 0% 15%), transparent);
+    background: linear-gradient(90deg, transparent, hsl(0 0% 0% / 0.05), transparent);
+  }
+
+  /* ─── Micro Grid Overlay ─── */
+  .micro-grid {
+    background-size: 40px 40px;
+    background-image: 
+      linear-gradient(to right, hsl(0 0% 0% / 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(0 0% 0% / 0.03) 1px, transparent 1px);
+    mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+  }
+
+  /* ─── Spotlight Vignette Overlay ─── */
+  .spotlight-vignette {
+    background: radial-gradient(ellipse at center, transparent 20%, hsl(210 20% 96% / 0.8) 100%);
   }
 
   /* ─── Noise Texture Overlay ─── */
@@ -310,6 +347,19 @@
     inset: 0;
     opacity: 0.015;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* ─── Animated Cinematic Grain ─── */
+  .animated-noise {
+    position: absolute;
+    inset: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    animation: grain 8s steps(10) infinite;
     pointer-events: none;
     z-index: 1;
   }
@@ -333,13 +383,15 @@
     animation: parallax-drift 20s ease-in-out infinite;
   }
 
-  /* Cinematic vignette for parallax hero */
+  /* Cinematic vignette for parallax hero (Updated for light artistic style) */
   .parallax-vignette::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at center, transparent 40%, hsl(0 0% 2% / 0.6) 100%);
+    /* Soft white fade out to edges rather than dark vignette */
+    background: radial-gradient(ellipse at center, transparent 30%, hsl(0 0% 100% / 0.6) 90%, hsl(0 0% 100%) 100%);
     pointer-events: none;
     z-index: 5;
   }
 }
+

@@ -6,7 +6,7 @@ const About = () => {
     <section id="about" className="py-32 relative overflow-hidden bg-background">
       {/* Background Elements */}
       <div className="section-divider absolute top-0 left-0 w-full" />
-      <div className="absolute top-1/4 -right-1/4 w-1/2 h-1/2 bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/4 -right-1/4 w-1/2 h-1/2 bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-0 -left-1/4 w-1/3 h-1/3 bg-accent/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="section-container relative z-10 w-full px-4 md:px-8 max-w-7xl mx-auto">
@@ -22,20 +22,21 @@ const About = () => {
             transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
             className="lg:col-span-5 relative order-2 lg:order-1"
           >
-            <div className="relative aspect-[4/5] sm:aspect-[3/4] lg:aspect-[4/5] w-full max-w-md mx-auto lg:max-w-none rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden shadow-2xl group ring-1 ring-border/50">
+            <div className="relative aspect-[4/5] sm:aspect-[3/4] lg:aspect-[4/5] w-full max-w-md mx-auto lg:max-w-none rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden shadow-2xl group ring-1 ring-border">
               {/* Glassmorphism overlay on hover */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10 mix-blend-overlay" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10 mix-blend-overlay" />
               
               <img 
-                src="/hero-purple.jpg" 
+                src="/candidate-hero-5.jpg" 
                 alt="Hon. Oladipupo Adebutu" 
                 className="w-full h-full object-cover object-top scale-[1.02] group-hover:scale-105 transition-transform duration-1000 ease-out"
                 loading="lazy"
+                decoding="async"
               />
               
               {/* Decorative glows */}
-              <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-primary/20 rounded-full blur-[50px]" />
-              <div className="absolute -top-10 -left-10 w-40 h-40 bg-accent/20 rounded-full blur-[50px]" />
+              <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-primary/10 rounded-full blur-[50px]" />
+              <div className="absolute -top-10 -left-10 w-40 h-40 bg-accent/10 rounded-full blur-[50px]" />
             </div>
 
             {/* Experience Floating Badge */}
@@ -92,13 +93,13 @@ const About = () => {
                 whileHover={{ y: -2 }}
                 whileTap={{ y: 0 }}
                 href="#vision" 
-                className="btn-primary group h-12 px-8 text-[15px]"
+                className="btn-pill-primary group h-12 px-8 text-[15px]"
                 onClick={(e) => { e.preventDefault(); document.querySelector("#vision")?.scrollIntoView({ behavior: "smooth" }); }}
               >
                 Discover His Vision
                 <ArrowUpRight className="ml-2 w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </motion.a>
-              <div className="flex items-center gap-3 px-5 py-3 rounded-xl border border-border/60 bg-card/40 backdrop-blur-sm">
+              <div className="flex items-center gap-3 px-5 py-3 rounded-xl border border-border/60 bg-white/60 backdrop-blur-md shadow-sm">
                 <Star className="w-5 h-5 text-[#C5A54B] fill-[#C5A54B]" />
                 <span className="text-sm font-semibold tracking-wide text-foreground uppercase">LADEF Principal</span>
               </div>
@@ -118,7 +119,7 @@ const About = () => {
             transition={{ duration: 0.5 }}
             className="col-span-2 row-span-2 bento-card group cursor-pointer flex flex-col items-center justify-center text-center overflow-hidden relative"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-card to-card z-0" />
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent z-0 pointer-events-none" />
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
             <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.08] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl" />
             
@@ -140,7 +141,7 @@ const About = () => {
             transition={{ delay: 0.1, duration: 0.5 }}
             className="col-span-1 row-span-1 bento-card flex flex-col justify-between group overflow-hidden relative"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.04] to-card opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.02] to-card opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             <div className="relative z-10 flex flex-col justify-between h-full p-2">
               <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
                 <Users className="text-primary w-5 h-5" />
@@ -178,7 +179,7 @@ const About = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.5 }}
-            className="col-span-2 row-span-1 bento-card group cursor-pointer flex items-center gap-5 sm:gap-6 bg-gradient-to-r from-accent/[0.04] to-card border-accent/10 hover:border-accent/30 transition-colors"
+            className="col-span-2 row-span-1 bento-card group cursor-pointer flex items-center gap-5 sm:gap-6 bg-accent/[0.02] border-accent/10 hover:border-accent/30 transition-colors"
           >
             <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 ml-2">
               <Zap className="text-accent w-7 h-7" />
@@ -196,7 +197,7 @@ const About = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4, duration: 0.5 }}
-            className="col-span-1 row-span-1 bento-card group cursor-pointer flex flex-col items-center justify-center gap-4 bg-gradient-to-br from-primary/[0.05] to-card"
+            className="col-span-1 row-span-1 bento-card group cursor-pointer flex flex-col items-center justify-center gap-4 bg-primary/[0.02]"
           >
             <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:-translate-y-1 transition-transform duration-300">
               <Star className="text-primary w-6 h-6" />
@@ -210,11 +211,11 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.5, duration: 0.5 }}
-            className="col-span-2 sm:col-span-3 lg:col-span-1 row-span-1 bento-card flex flex-col justify-between group bg-gradient-to-br from-primary/[0.15] to-card border border-primary/30 hover:border-primary/50 relative overflow-hidden"
+            className="col-span-2 sm:col-span-3 lg:col-span-1 row-span-1 bento-card flex flex-col justify-between group bg-primary/[0.04] border border-primary/20 hover:border-primary/40 relative overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.05] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
             <div className="relative z-20 flex flex-col justify-between h-full p-1 lg:p-0">
-              <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center mb-4 group-hover:-translate-y-1 transition-transform duration-300">
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:-translate-y-1 transition-transform duration-300">
                 <Handshake className="text-primary" size={24} />
               </div>
               <div className="mt-auto">
@@ -236,7 +237,7 @@ const About = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.6, duration: 0.5 }}
-            className="col-span-2 row-span-1 bento-card group cursor-pointer flex items-center gap-5 sm:gap-6 bg-gradient-to-r from-card via-card to-primary/[0.04] border-primary/10 hover:border-primary/20"
+            className="col-span-2 row-span-1 bento-card group cursor-pointer flex items-center gap-5 sm:gap-6 bg-accent/[0.01] border-primary/10 hover:border-primary/30"
           >
             <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:-rotate-3 transition-all duration-300 ml-2">
               <Handshake className="text-primary w-7 h-7" />

@@ -95,8 +95,8 @@ const WardTracker = () => {
               onClick={() => setFilter(f)}
               className={`px-5 py-2.5 rounded-full text-xs font-semibold transition-all duration-300 ${
                 filter === f
-                  ? "bg-foreground text-background shadow-[0_2px_12px_hsl(0_0%_100%/0.1)]"
-                  : "bg-card border border-border/50 text-muted-foreground hover:text-foreground hover:border-foreground/15"
+                  ? "bg-foreground text-background shadow-[0_2px_12px_hsl(0_0%_0%/0.1)]"
+                  : "bg-white border border-border text-muted-foreground hover:text-foreground hover:border-foreground/15 shadow-sm"
               }`}
             >
               {f}

@@ -79,7 +79,7 @@ const AIAssistant = () => {
           >
             <button
               onClick={() => setIsOpen(true)}
-              className="group relative flex h-14 w-14 items-center justify-center rounded-full bg-[#0B1F3A] hover:bg-[#132A4A] text-white shadow-xl transition-all duration-300 hover:scale-[1.05] border border-white/10 pointer-events-auto"
+              className="group relative flex h-14 w-14 items-center justify-center rounded-full bg-primary hover:bg-primary/90 text-white shadow-[0_8px_30px_hsl(152_62%_42%/0.4)] transition-all duration-300 hover:scale-[1.05] border border-white/20 pointer-events-auto"
             >
               <MessageSquare size={24} />
             </button>
@@ -152,7 +152,7 @@ const AIAssistant = () => {
                   
                   <div className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-sm ${
                     msg.role === "user" 
-                      ? "bg-[#0B1F3A] text-white shadow-md rounded-tr-sm" 
+                      ? "bg-primary text-white shadow-md rounded-tr-sm" 
                       : "bg-muted/50 text-foreground rounded-tl-sm border border-border/30"
                   }`}>
                     {msg.isTyping ? (

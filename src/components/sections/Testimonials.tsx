@@ -71,11 +71,11 @@ const Testimonials = () => {
         <div className="max-w-4xl mx-auto">
           <div className="relative">
             {/* Large quote card */}
-            <div className="bento-card gradient-border !p-0 overflow-hidden min-h-[320px] sm:min-h-[280px]">
+            <div className="bento-card gradient-border !p-0 overflow-hidden min-h-[320px] sm:min-h-[280px] bg-white">
               {/* Background decorations */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.03] via-transparent to-accent/[0.02] rounded-2xl" />
-              <Quote className="absolute top-8 right-8 text-primary/[0.06]" size={80} />
-              <Quote className="absolute bottom-8 left-8 text-accent/[0.04] rotate-180" size={50} />
+              <Quote className="absolute top-8 right-8 text-primary/[0.08]" size={80} />
+              <Quote className="absolute bottom-8 left-8 text-accent/[0.06] rotate-180" size={50} />
 
               <AnimatePresence mode="wait" custom={direction}>
                 <motion.div

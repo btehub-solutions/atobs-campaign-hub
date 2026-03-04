@@ -72,49 +72,58 @@ const Hero = () => {
       className="relative min-h-screen flex items-center overflow-hidden"
     >
       {/* ─── Background Layers ─── */}
-      <motion.div className="absolute inset-0" style={{ y: bgY }}>
+      <motion.div className="absolute inset-0 z-0" style={{ y: bgY }}>
         {/* Subtle landmark silhouette background — faded */}
         <div
-          className="absolute inset-0 opacity-[0.03]"
+          className="absolute inset-0 opacity-[0.03] mix-blend-multiply"
           style={{
             backgroundImage: `url('/hero-green.jpg')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
-            filter: "grayscale(100%) brightness(0.5)",
+            filter: "grayscale(100%)",
           }}
         />
-        {/* Primary radial glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,hsl(152_62%_42%/0.08),transparent)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_80%_50%,hsl(152_62%_42%/0.05),transparent)]" />
-        {/* Dark base */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
+        {/* Artistic blended meshes */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-20%,hsl(152_62%_42%/0.12),transparent)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_80%_50%,hsl(45_80%_58%/0.08),transparent)] pointer-events-none" />
+        {/* Soft white base overlay */}
+        <div className="absolute inset-0 bg-white/40 backdrop-blur-[1px] pointer-events-none" />
 
         {/* Mobile Candidate Background Layer (Behind text) */}
-        <div className="absolute inset-0 lg:hidden pointer-events-none select-none">
+        <div className="absolute inset-0 lg:hidden pointer-events-none select-none mix-blend-multiply opacity-20">
           <div 
-            className="absolute inset-0 bg-cover bg-top opacity-30 mix-blend-luminosity grayscale"
+            className="absolute inset-0 bg-cover bg-top grayscale"
             style={{ 
               backgroundImage: `url('/candidate-hero-1.jpg')`,
-              maskImage: 'linear-gradient(to bottom, black 20%, transparent 80%)', 
-              WebkitMaskImage: 'linear-gradient(to bottom, black 20%, transparent 80%)' 
+              maskImage: 'linear-gradient(to bottom, black 15%, transparent 85%)', 
+              WebkitMaskImage: 'linear-gradient(to bottom, black 15%, transparent 85%)' 
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/60 to-background opacity-80" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/60 to-background opacity-100" />
         </div>
       </motion.div>
 
-      {/* Grid pattern overlay */}
+      {/* Refined Grid pattern overlay */}
       <div
-        className="absolute inset-0 opacity-[0.015]"
+        className="absolute inset-0 opacity-[0.3] pointer-events-none"
         style={{
-          backgroundImage: `linear-gradient(hsl(0 0% 100% / 0.1) 1px, transparent 1px), linear-gradient(90deg, hsl(0 0% 100% / 0.1) 1px, transparent 1px)`,
+          backgroundImage: `linear-gradient(hsl(152 62% 42% / 0.05) 1px, transparent 1px), linear-gradient(90deg, hsl(152 62% 42% / 0.05) 1px, transparent 1px)`,
           backgroundSize: "60px 60px",
         }}
       />
 
-      {/* Ambient orbs */}
-      <div className="absolute top-[15%] left-[10%] w-[500px] h-[500px] rounded-full bg-primary/[0.04] blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-[15%] right-[5%] w-[500px] h-[500px] rounded-full bg-accent/[0.03] blur-[100px] pointer-events-none" />
+      {/* Dynamic Ambient orbs for storytelling light bleed */}
+      <motion.div 
+        animate={{ scale: [1, 1.05, 1], opacity: [0.6, 0.8, 0.6] }} 
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] rounded-full bg-primary/[0.08] blur-[150px] pointer-events-none mix-blend-multiply" 
+      />
+      <motion.div 
+        animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.7, 0.5] }} 
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        className="absolute bottom-[-10%] right-[-10%] w-[700px] h-[700px] rounded-full bg-accent/[0.08] blur-[160px] pointer-events-none mix-blend-multiply" 
+      />
+      <div className="absolute top-[40%] left-[30%] w-[400px] h-[400px] rounded-full bg-primary/[0.04] blur-[100px] pointer-events-none mix-blend-multiply" />
 
       {/* ─── Main Content ─── */}
       <motion.div
@@ -131,7 +140,7 @@ const Hero = () => {
               transition={{ delay: 0.2, duration: 0.7, ease: easeOut }}
               className="flex flex-wrap items-center gap-3 mb-6"
             >
-               <span className="inline-flex items-center justify-center gap-2 rounded-full border border-border/40 bg-card/50 px-3 py-1 text-[11px] font-medium text-muted-foreground backdrop-blur-md whitespace-nowrap">
+               <span className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-white px-3 py-1 text-[11px] font-semibold text-foreground shadow-sm whitespace-nowrap">
                  <TimeIcon size={12} className="text-primary" />
                  {greeting}, Abeokuta South
                </span>
@@ -206,7 +215,7 @@ const Hero = () => {
                     .querySelector("#contact")
                     ?.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="btn-pill-outline cursor-pointer bg-card/50 backdrop-blur-sm"
+                className="btn-pill-outline cursor-pointer bg-white/70 backdrop-blur-md shadow-sm border-white/40 hover:bg-white"
               >
                 <Play size={13} className="ml-0.5" />
                 Our Vision
@@ -246,12 +255,12 @@ const Hero = () => {
           >
             <div className="relative w-full max-w-[480px]">
               {/* Decorative glow behind photo */}
-              <div className="absolute inset-0 flex items-center justify-center">
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <div
                   className="absolute w-[120%] h-[120%] rounded-full"
                   style={{
                     background:
-                      "radial-gradient(ellipse at center, hsl(152 62% 42% / 0.10) 0%, transparent 65%)",
+                      "radial-gradient(ellipse at center, hsl(152 62% 42% / 0.05) 0%, transparent 65%)",
                   }}
                 />
                 {/* Dotted pattern overlay */}
@@ -275,13 +284,16 @@ const Hero = () => {
               {/* Candidate Image Container */}
               <div className="relative z-10">
                 {/* Outer ring — premium border effect */}
-                <div className="rounded-2xl p-[2px] bg-gradient-to-b from-primary/30 via-primary/10 to-transparent shadow-[0_8px_60px_-12px_hsl(152_62%_42%/0.25)]">
-                  <div className="relative rounded-[14px] overflow-hidden aspect-[4/5] bg-background">
+                <div className="rounded-2xl p-[1px] bg-gradient-to-b from-border via-border/50 to-transparent shadow-[0_20px_40px_-12px_hsl(0_0%_0%/0.12)]">
+                  <div className="relative rounded-[15px] overflow-hidden aspect-[4/5] bg-white ring-1 ring-border shadow-inner">
                     {/* Candidate portrait */}
                     <img
                       src="/candidate-hero-1.jpg"
                       alt="Hon. Lukmon Atobatele — Candidate for Abeokuta South Constituency 1"
                       className="w-full h-full object-cover object-center"
+                      fetchPriority="high"
+                      loading="eager"
+                      decoding="sync"
                       style={{
                         imageRendering: "auto",
                         WebkitBackfaceVisibility: "hidden",
@@ -290,13 +302,13 @@ const Hero = () => {
                     />
 
                     {/* Very subtle bottom vignette — keeps image clear */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none mix-blend-multiply" />
 
                     {/* Name overlay at bottom of photo */}
-                    <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
+                    <div className="absolute bottom-0 left-0 right-0 p-6 z-10 pointer-events-none">
                       <div className="flex items-center gap-3">
-                        <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                        <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-primary/90 drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]">
+                        <div className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_hsl(152_62%_42%)]" />
+                        <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-white drop-shadow-md">
                           Tested · Trusted · Ready
                         </span>
                       </div>
