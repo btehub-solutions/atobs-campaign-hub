@@ -11,11 +11,25 @@ const magazines = [
     issue: "Vol 3.1"
   },
   {
-    title: "LADEF Magazine (Part 2)",
-    description: "Pages 26 to 52. Continuing the journey, featuring detailed accounts of the medical outreaches, testimonies, and the roadmap for the future.",
-    href: "/PDF/MAGAZINE 3 Pg26- Pg52 B JPEG SENT TO ATOBS.pdf",
+    title: "LADEF Magazine (Part 2 - A)",
+    description: "Pages 26 to 34. Featuring detailed accounts of medical outreaches and community development initiatives.",
+    href: "/PDF/MAGAZINE 3 Pg26-34.pdf",
     coverColor: "from-accent/[0.15] to-accent/[0.05]",
-    issue: "Vol 3.2"
+    issue: "Vol 3.2A"
+  },
+  {
+    title: "LADEF Magazine (Part 2 - B)",
+    description: "Pages 35 to 43. Documenting the campaign's progress and growing endorsements across Abeokuta South.",
+    href: "/PDF/MAGAZINE 3 Pg35-43.pdf",
+    coverColor: "from-[#C5A54B]/[0.15] to-[#C5A54B]/[0.05]",
+    issue: "Vol 3.2B"
+  },
+  {
+    title: "LADEF Magazine (Part 2 - C)",
+    description: "Pages 44 to 52. The roadmap for the future and the candidate's final message to the constituents.",
+    href: "/PDF/MAGAZINE 3 Pg44-52.pdf",
+    coverColor: "from-primary/[0.15] to-primary/[0.05]",
+    issue: "Vol 3.2C"
   }
 ];
 
