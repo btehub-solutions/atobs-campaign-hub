@@ -210,12 +210,12 @@ const AIAssistant = () => {
             {messages.length === 1 && (
               <div className="px-4 pb-2 space-y-2">
                 <span className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground">Suggested topics:</span>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex overflow-x-auto gap-2 pb-2 scrollbar-none [-ms-overflow-style:'none'] [scrollbar-width:'none']">
                   {SUGGESTIONS.map((suggestion) => (
                     <button
                       key={suggestion}
                       onClick={() => handleSend(suggestion)}
-                      className="inline-flex items-center gap-1 rounded-full border border-primary/20 bg-primary/[0.03] px-3 py-1.5 text-xs text-foreground transition-all hover:bg-primary/10 hover:border-primary/30"
+                      className="inline-flex shrink-0 items-center gap-1 rounded-full border border-primary/20 bg-primary/[0.03] px-3 py-1.5 text-xs text-foreground transition-all hover:bg-primary/10 hover:border-primary/30"
                     >
                       {suggestion} <ChevronRight size={10} className="opacity-50" />
                     </button>
