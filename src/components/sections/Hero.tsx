@@ -42,6 +42,8 @@ const Hero = () => {
     offset: ["start start", "end start"],
   });
   const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.3]);
+  const scale = useTransform(scrollYProgress, [0, 0.8], [1, 0.98]);
 
   const easeOut = [0.25, 0.46, 0.45, 0.94] as const;
 
@@ -71,16 +73,14 @@ const Hero = () => {
     >
       {/* ─── Background Layers ─── */}
       <motion.div className="absolute inset-0 z-0" style={{ y: bgY }}>
-        {/* Abeokuta (Olumo) Rock high-quality background overlay */}
+        {/* Subtle landmark silhouette background — faded */}
         <div
-          className="absolute inset-0 opacity-[0.2] md:opacity-[0.15] mix-blend-multiply"
+          className="absolute inset-0 opacity-[0.03] mix-blend-multiply"
           style={{
-            backgroundImage: `url('/abeokuta_rock.png')`,
+            backgroundImage: `url('/hero-green.jpg')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
-            filter: "grayscale(30%) sepia(20%) hue-rotate(80deg) contrast(110%)",
-            maskImage: "linear-gradient(to bottom, black 30%, transparent 100%)",
-            WebkitMaskImage: "linear-gradient(to bottom, black 30%, transparent 100%)"
+            filter: "grayscale(100%)",
           }}
         />
         {/* Artistic blended meshes */}
@@ -89,7 +89,18 @@ const Hero = () => {
         {/* Soft white base overlay */}
         <div className="absolute inset-0 bg-white/40 backdrop-blur-[1px] pointer-events-none" />
 
-        {/* Removed Mobile Candidate Background Layer to reduce clutter and improve text readability */}
+        {/* Mobile Candidate Background Layer (Behind text) */}
+        <div className="absolute inset-0 lg:hidden pointer-events-none select-none opacity-[0.35]">
+          <div 
+            className="absolute inset-0 bg-cover bg-top grayscale-[50%]"
+            style={{ 
+              backgroundImage: `url('')`,
+              maskImage: 'linear-gradient(to bottom, black 15%, transparent 85%)', 
+              WebkitMaskImage: 'linear-gradient(to bottom, black 15%, transparent 85%)' 
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/60 to-background opacity-100" />
+        </div>
       </motion.div>
 
       {/* Refined Grid pattern overlay */}
@@ -117,8 +128,9 @@ const Hero = () => {
       {/* ─── Main Content ─── */}
       <motion.div
         className="section-container relative z-10 pt-28 pb-20 lg:pt-32 lg:pb-24"
+        style={{ opacity, scale }}
       >
-        <div className="grid lg:grid-cols-12 gap-16 lg:gap-6 items-center">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-6 items-center">
           {/* ─── Left Column: Text ─── */}
           <div className="lg:col-span-6 xl:col-span-6">
             {/* Dynamic Greeting Badge */}
@@ -141,10 +153,10 @@ const Hero = () => {
               transition={{ delay: 0.35, duration: 0.7, ease: easeOut }}
               className="mb-7"
             >
-              <span className="block font-display italic !text-[#C5A54B] font-bold text-[3.2rem] sm:text-[4.5rem] lg:text-[5.5rem] xl:text-[6.5rem] leading-[0.9] tracking-tight">
+              <span className="block font-display italic !text-[#C5A54B] font-bold text-[3.5rem] sm:text-[4.5rem] lg:text-[5.5rem] xl:text-[6.5rem] leading-[0.9] tracking-tight">
                 Hon. Lukmon
               </span>
-              <span className="block font-heading font-bold text-foreground text-[2.8rem] sm:text-[4rem] lg:text-[5rem] xl:text-[5.5rem] leading-[0.95] tracking-tight mt-1 sm:mt-0">
+              <span className="block font-heading font-bold text-foreground text-[3rem] sm:text-[4rem] lg:text-[5rem] xl:text-[5.5rem] leading-[0.95] tracking-tight">
                 Atobatele
               </span>
             </motion.h1>
@@ -215,7 +227,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.0, duration: 0.7, ease: easeOut }}
-              className="flex flex-wrap gap-6 sm:gap-10 mt-14 mb-8 lg:mb-0 pt-7 border-t border-border/40"
+              className="flex gap-10 mt-14 mb-8 lg:mb-0 pt-7 border-t border-border/40"
             >
               {[
                 { value: "513", label: "Agritech Graduates" },
@@ -237,12 +249,11 @@ const Hero = () => {
           {/* ─── Right Column: Candidate Photo ─── */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, x: 40 }}
-            whileInView={{ opacity: 1, scale: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 1, ease: easeOut }}
-            className="flex lg:col-span-6 xl:col-span-6 relative justify-center items-center w-full"
+            animate={{ opacity: 1, scale: 1, x: 0 }}
+            transition={{ delay: 0.5, duration: 1, ease: easeOut }}
+            className="hidden lg:flex lg:col-span-6 xl:col-span-6 relative justify-center items-center"
           >
-            <div className="relative w-full max-w-[320px] sm:max-w-[400px] lg:max-w-[480px]">
+            <div className="relative w-full max-w-[480px]">
               {/* Decorative glow behind photo */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <div
@@ -277,7 +288,7 @@ const Hero = () => {
                   <div className="relative rounded-[15px] overflow-hidden aspect-[4/5] bg-white ring-1 ring-border shadow-inner">
                     {/* Candidate portrait */}
                     <img
-                      src="/candidate-hero-1.jpg"
+                      src=""
                       alt="Hon. Lukmon Atobatele — Candidate for Abeokuta South Constituency 1"
                       className="w-full h-full object-cover object-center"
                       fetchPriority="high"
@@ -293,29 +304,20 @@ const Hero = () => {
                     {/* Very subtle bottom vignette — keeps image clear */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none mix-blend-multiply" />
 
-                    {/* Name overlay at bottom of photo */}
-                    <div className="absolute bottom-0 left-0 right-0 p-6 z-10 pointer-events-none">
-                      <div className="flex items-center gap-3">
-                        <div className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_hsl(152_62%_42%)]" />
-                        <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-white drop-shadow-md">
-                          Tested · Trusted · Ready
-                        </span>
-                      </div>
-                    </div>
+
                   </div>
                 </div>
 
                 {/* Floating achievement card */}
                 <motion.div
                   initial={{ opacity: 0, y: 20, x: -30 }}
-                  whileInView={{ opacity: 1, y: 0, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.5, duration: 0.6, ease: "easeOut" }}
-                  className="absolute -bottom-4 -left-2 sm:-left-6 z-20 glass-card rounded-2xl p-3 sm:p-4 max-w-[180px] sm:max-w-[200px]"
+                  animate={{ opacity: 1, y: 0, x: 0 }}
+                  transition={{ delay: 1.2, duration: 0.6, ease: "easeOut" }}
+                  className="absolute -bottom-4 -left-6 z-20 glass-card rounded-2xl p-4 max-w-[200px]"
                 >
-                  <div className="flex items-center gap-2 sm:gap-3 mb-2">
-                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gradient-to-br from-primary/30 to-primary/10 border border-primary/30 flex items-center justify-center">
-                      <span className="text-primary font-bold text-[10px] sm:text-xs">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-9 h-9 rounded-full bg-gradient-to-br from-primary/30 to-primary/10 border border-primary/30 flex items-center justify-center">
+                      <span className="text-primary font-bold text-xs">
                         LA
                       </span>
                     </div>
@@ -341,21 +343,20 @@ const Hero = () => {
                 {/* Floating LADEF badge — top right */}
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
+                  animate={{ opacity: 1, scale: 1 }}
                   transition={{
-                    delay: 0.7,
+                    delay: 1.4,
                     duration: 0.5,
                     type: "spring",
                     stiffness: 200,
                   }}
-                  className="absolute -top-3 -right-1 sm:-right-3 z-20"
+                  className="absolute -top-3 -right-3 z-20"
                 >
-                  <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl glass-card flex items-center justify-center border border-primary/20 shadow-[0_0_40px_hsl(152_62%_42%/0.15)]">
+                  <div className="w-24 h-24 rounded-2xl glass-card flex items-center justify-center border border-primary/20 shadow-[0_0_40px_hsl(152_62%_42%/0.15)]">
                     <img
-                      src="/ladef-logo.png"
-                      alt="LADEF Logo"
-                      className="w-12 h-12 sm:w-16 sm:h-16 object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.3)]"
+                      src=""
+                      alt=""
+                      className="w-16 h-16 object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.3)]"
                     />
                   </div>
                 </motion.div>
@@ -381,7 +382,7 @@ const Hero = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
-        className="hidden lg:block absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
       >
         <motion.div
           animate={{ y: [0, 6, 0] }}
@@ -402,6 +403,9 @@ const Hero = () => {
           />
         </motion.div>
       </motion.div>
+
+      {/* Bottom gradient fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none" />
     </section>
   );
 };
