@@ -75,7 +75,7 @@ const Hero = () => {
       <motion.div className="absolute inset-0 z-0" style={{ y: bgY }}>
         {/* Subtle landmark silhouette background — faded */}
         <div
-          className="absolute inset-0 opacity-[0.03] mix-blend-multiply"
+          className="absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage: `url('/hero-green.jpg')`,
             backgroundSize: "cover",
@@ -113,17 +113,13 @@ const Hero = () => {
       />
 
       {/* Dynamic Ambient orbs for storytelling light bleed */}
-      <motion.div 
-        animate={{ scale: [1, 1.05, 1], opacity: [0.6, 0.8, 0.6] }} 
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] rounded-full bg-primary/[0.08] blur-[150px] pointer-events-none mix-blend-multiply" 
+      <div 
+        className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] rounded-full bg-primary/[0.05] blur-[100px] pointer-events-none" 
       />
-      <motion.div 
-        animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.7, 0.5] }} 
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        className="absolute bottom-[-10%] right-[-10%] w-[700px] h-[700px] rounded-full bg-accent/[0.08] blur-[160px] pointer-events-none mix-blend-multiply" 
+      <div 
+        className="absolute bottom-[-10%] right-[-10%] w-[700px] h-[700px] rounded-full bg-accent/[0.05] blur-[100px] pointer-events-none" 
       />
-      <div className="absolute top-[40%] left-[30%] w-[400px] h-[400px] rounded-full bg-primary/[0.04] blur-[100px] pointer-events-none mix-blend-multiply" />
+      <div className="absolute top-[40%] left-[30%] w-[400px] h-[400px] rounded-full bg-primary/[0.03] blur-[80px] pointer-events-none" />
 
       {/* ─── Main Content ─── */}
       <motion.div
@@ -140,7 +136,7 @@ const Hero = () => {
               transition={{ delay: 0.2, duration: 0.7, ease: easeOut }}
               className="flex flex-wrap items-center gap-3 mb-6"
             >
-               <span className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-white px-3 py-1 text-[11px] font-semibold text-foreground shadow-sm whitespace-nowrap">
+               <span className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-[11px] font-semibold text-foreground shadow-sm whitespace-nowrap">
                  <TimeIcon size={12} className="text-primary" />
                  {greeting}, Abeokuta South
                </span>
@@ -215,7 +211,7 @@ const Hero = () => {
                     .querySelector("#contact")
                     ?.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="btn-pill-outline cursor-pointer bg-white/70 backdrop-blur-md shadow-sm border-white/40 hover:bg-white"
+                className="btn-pill-outline cursor-pointer bg-card/70 backdrop-blur-md shadow-sm border-white/40 hover:bg-card"
               >
                 <Play size={13} className="ml-0.5" />
                 Our Vision
@@ -285,7 +281,7 @@ const Hero = () => {
               <div className="relative z-10">
                 {/* Outer ring — premium border effect */}
                 <div className="rounded-2xl p-[1px] bg-gradient-to-b from-border via-border/50 to-transparent shadow-[0_20px_40px_-12px_hsl(0_0%_0%/0.12)]">
-                  <div className="relative rounded-[15px] overflow-hidden aspect-[4/5] bg-white ring-1 ring-border shadow-inner">
+                  <div className="relative rounded-[15px] overflow-hidden aspect-[4/5] bg-card ring-1 ring-border shadow-inner">
                     {/* Candidate portrait */}
                     <img
                       src=""
@@ -302,7 +298,7 @@ const Hero = () => {
                     />
 
                     {/* Very subtle bottom vignette — keeps image clear */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none mix-blend-multiply" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
 
 
                   </div>

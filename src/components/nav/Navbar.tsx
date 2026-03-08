@@ -70,7 +70,7 @@ const Navbar = () => {
     >
       <div className={`section-container transition-all duration-700 ${
         scrolled
-          ? "bg-white/80 backdrop-blur-2xl border border-border/80 rounded-2xl shadow-[0_8px_30px_hsl(0_0%_0%/0.04)] mx-6 sm:mx-8 lg:mx-auto max-w-[1240px] px-6"
+          ? "bg-card/80 backdrop-blur-2xl border border-border/80 rounded-2xl shadow-[0_8px_30px_hsl(0_0%_0%/0.04)] mx-6 sm:mx-8 lg:mx-auto max-w-[1240px] px-6"
           : ""
       }`}>
         <div className="flex items-center justify-between h-14 lg:h-16">
@@ -139,11 +139,11 @@ const Navbar = () => {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="md:hidden bg-background/95 backdrop-blur-3xl border-t border-border/30 overflow-hidden mt-2 mx-6 rounded-2xl border border-border/40"
+            initial={{ opacity: 0, height: 0, y: -10 }}
+            animate={{ opacity: 1, height: "auto", y: 0 }}
+            exit={{ opacity: 0, height: 0, y: -10 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="md:hidden bg-card/95 backdrop-blur-3xl border-t border-border/30 overflow-hidden mt-2 mx-6 rounded-2xl border border-border/40"
           >
             <div className="p-5 flex flex-col gap-0.5">
               {navLinks.map((link, i) => (

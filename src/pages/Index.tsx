@@ -18,12 +18,6 @@ const AIAssistant = lazy(() => import("@/components/ui/AIAssistant"));
 
 const Index = () => {
   const { scrollYProgress } = useScroll();
-  
-  // Spring configuration for a smooth, premium parallax feel
-  const springConfig = { stiffness: 50, damping: 30, restDelta: 0.001 };
-  
-  // Parallax translation for the background rock - moves downwards slightly as you scroll down
-  const rockY = useSpring(useTransform(scrollYProgress, [0, 1], ["0%", "20%"]), springConfig);
 
   // Scroll-driven background color shift
   const backgroundColor = useTransform(
@@ -48,38 +42,14 @@ const Index = () => {
         <div className="absolute inset-0 spotlight-vignette opacity-60" />
 
         {/* Abstract animated gradient orbs */}
-        <motion.div 
-          animate={{ x: [0, 50, 0], y: [0, -50, 0] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-primary/10 blur-[120px] mix-blend-multiply opacity-60 will-change-transform transform-gpu" 
-        />
+        <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-primary/5 blur-[80px] opacity-40 will-change-transform transform-gpu animate-parallax-ambient-drift" />
         
-        <motion.div 
-          animate={{ x: [0, -30, 0], y: [0, 40, 0] }}
-          transition={{ duration: 15, repeat: Infinity, ease: "linear", delay: 5 }}
-          className="absolute top-[30%] right-[-5%] w-[40vw] h-[40vw] rounded-full bg-accent/15 blur-[130px] mix-blend-multiply opacity-50 will-change-transform transform-gpu" 
-        />
+        <div className="absolute top-[30%] right-[-5%] w-[40vw] h-[40vw] rounded-full bg-accent/10 blur-[80px] opacity-30 will-change-transform transform-gpu animate-parallax-ambient-drift" style={{ animationDelay: '5s' }} />
 
-        <motion.div 
-          animate={{ x: [0, 60, 0], scale: [1, 1.1, 1] }}
-          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-[-20%] left-[20%] w-[60vw] h-[40vw] rounded-full bg-[hsl(210_40%_85%)] blur-[150px] mix-blend-multiply opacity-70 will-change-transform transform-gpu" 
-        />
+        <div className="absolute bottom-[-20%] left-[20%] w-[60vw] h-[40vw] rounded-full bg-[hsl(210_40%_85%)] blur-[90px] opacity-50 will-change-transform transform-gpu animate-parallax-ambient-drift" style={{ animationDelay: '2s' }} />
         
         {/* Animated Cinematic Grain replacing static noise */}
         <div className="animated-noise" />
-
-        {/* Parallax Rock Watermark - Extremely subtle, blended into the artistic background */}
-        <motion.div 
-          className="absolute inset-0 mix-blend-color-burn opacity-[0.02] will-change-transform transform-gpu"
-          style={{ 
-            y: rockY,
-            backgroundImage: "url('/parallax/rock.png')",
-            backgroundSize: "cover",
-            backgroundPosition: "center top",
-            backgroundRepeat: "no-repeat"
-          }}
-        />
       </motion.div>
 
       {/* MAIN PAGE CONTENT */}

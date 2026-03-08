@@ -18,7 +18,7 @@ const DocumentCard = ({ magazine, index }: { magazine: typeof magazines[0], inde
         {/* Top Accent Bar */}
         <div className={`h-1.5 w-full bg-gradient-to-r ${magazine.coverColor} opacity-70`} />
         
-        <div className="p-8 flex-1 flex flex-col bg-white">
+        <div className="p-8 flex-1 flex flex-col bg-card">
           <div className="flex items-start justify-between mb-6">
             <div className="w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-500 shadow-sm">
               <FileText size={28} strokeWidth={1.5} />
@@ -64,11 +64,11 @@ const DocumentCard = ({ magazine, index }: { magazine: typeof magazines[0], inde
 
 const Publications = () => {
   return (
-    <section id="publications" className="py-32 relative overflow-hidden bg-white">
+    <section id="publications" className="py-32 relative overflow-hidden">
       {/* Background aesthetics */}
       <div className="section-divider absolute top-0 left-0 w-full" />
-      <div className="absolute top-1/2 left-1/4 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] pointer-events-none -translate-y-1/2 -translate-x-1/2" />
-      <div className="absolute top-1/2 right-1/4 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[100px] pointer-events-none -translate-y-1/2 translate-x-1/2" />
+      <div className="absolute top-1/2 left-1/4 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[60px] pointer-events-none -translate-y-1/2 -translate-x-1/2" />
+      <div className="absolute top-1/2 right-1/4 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[60px] pointer-events-none -translate-y-1/2 translate-x-1/2" />
       
       <div className="section-container relative z-10">
         <motion.div

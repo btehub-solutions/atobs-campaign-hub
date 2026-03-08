@@ -3,11 +3,11 @@ import { ArrowUpRight, Award, Users, Handshake, Star, Heart, Landmark, Zap } fro
 
 const About = () => {
   return (
-    <section id="about" className="py-32 relative overflow-hidden bg-background">
+    <section id="about" className="py-32 relative overflow-hidden">
       {/* Background Elements */}
       <div className="section-divider absolute top-0 left-0 w-full" />
-      <div className="absolute top-1/4 -right-1/4 w-1/2 h-1/2 bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-0 -left-1/4 w-1/3 h-1/3 bg-accent/5 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-1/4 -right-1/4 w-1/2 h-1/2 bg-primary/5 rounded-full blur-[60px] pointer-events-none" />
+      <div className="absolute bottom-0 -left-1/4 w-1/3 h-1/3 bg-accent/5 rounded-full blur-[60px] pointer-events-none" />
 
       <div className="section-container relative z-10 w-full px-4 md:px-8 max-w-7xl mx-auto">
         
@@ -99,7 +99,7 @@ const About = () => {
                 Discover His Vision
                 <ArrowUpRight className="ml-2 w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </motion.a>
-              <div className="flex items-center gap-3 px-5 py-3 rounded-xl border border-border/60 bg-white/60 backdrop-blur-md shadow-sm">
+              <div className="flex items-center gap-3 px-5 py-3 rounded-xl border border-border/60 bg-card/60 backdrop-blur-md shadow-sm">
                 <Star className="w-5 h-5 text-[#C5A54B] fill-[#C5A54B]" />
                 <span className="text-sm font-semibold tracking-wide text-foreground uppercase">LADEF Principal</span>
               </div>

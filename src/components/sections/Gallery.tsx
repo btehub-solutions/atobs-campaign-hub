@@ -76,10 +76,10 @@ const galleryItems: any[] = [
 
 const Gallery = () => {
   return (
-    <section id="gallery" className="py-32 relative overflow-hidden bg-background">
+    <section id="gallery" className="py-32 relative overflow-hidden">
       {/* Intense Ambient Mesh Glows (Shopify Style) */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80vw] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[600px] bg-accent/5 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80vw] h-[500px] bg-primary/5 rounded-full blur-[60px] pointer-events-none" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[600px] bg-accent/5 rounded-full blur-[80px] pointer-events-none" />
       
       <div className="section-divider absolute top-0 left-0 w-full" />
 
@@ -137,7 +137,7 @@ const Gallery = () => {
                   </>
                 ) : (
                   <>
-                    <div className="absolute inset-0 bg-white border border-border/80 -z-20 shadow-sm" />
+                    <div className="absolute inset-0 bg-card border border-border/80 -z-20 shadow-sm" />
                     <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-50 group-hover:opacity-100 transition-opacity duration-500 -z-10`} />
                     {/* Abstract Grid Overlays for non-image cards */}
                     <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] -z-10 pointer-events-none opacity-50" />
@@ -156,7 +156,7 @@ const Gallery = () => {
                 <div className="relative z-20 flex flex-col items-start gap-4">
                   {/* Floating Icon Badge */}
                   <div className={`w-12 h-12 rounded-2xl flex items-center justify-center backdrop-blur-md shadow-sm transition-transform duration-500 group-hover:-translate-y-1 ${
-                    item.hasImage ? "bg-white/10 border border-white/20 text-white" : "bg-white/80 border border-border/50 text-primary"
+                    item.hasImage ? "bg-white/10 border border-white/20 text-white" : "bg-card/80 border border-border/50 text-primary"
                   }`}>
                     <Icon size={22} strokeWidth={2} />
                   </div>

@@ -43,6 +43,7 @@ const Footer = () => {
                   src="/ladef-logo-trimmed.png" 
                   alt="LADEF Logo" 
                   className="absolute left-0 h-full w-auto max-w-none object-contain origin-left drop-shadow-[0_2px_8px_rgba(0,0,0,0.3)]"
+                  loading="lazy"
                 />
               </div>
               <p className="text-muted-foreground text-[13px] leading-[1.7]">

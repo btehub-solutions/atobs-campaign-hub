@@ -229,6 +229,7 @@ const Testimonials = () => {
               poster="/images/video-thumbnail.jpg"
               onPause={() => setIsVideoPlaying(false)}
               onEnded={() => setIsVideoPlaying(false)}
+              preload="none"
             >
               <source src="/Video/LADEF Medical & Surgical Outrech 2 compressed.mp4" type="video/mp4" />
               Your browser does not support the video tag.

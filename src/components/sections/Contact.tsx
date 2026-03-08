@@ -101,7 +101,7 @@ const Contact = () => {
                       <FormItem>
                         <FormLabel className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Full Name</FormLabel>
                         <FormControl>
-                          <Input placeholder="Your name" {...field} className="bg-white border-border rounded-xl h-11 px-4 text-sm focus:border-primary/60 transition-all duration-300 shadow-sm" />
+                          <Input placeholder="Your name" {...field} className="bg-card border-border rounded-xl h-11 px-4 text-sm focus:border-primary/60 transition-all duration-300 shadow-sm" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -110,7 +110,7 @@ const Contact = () => {
                       <FormItem>
                         <FormLabel className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Ward</FormLabel>
                         <FormControl>
-                          <Input placeholder="e.g. Ake I" {...field} className="bg-white border-border rounded-xl h-11 px-4 text-sm focus:border-primary/60 transition-all duration-300 shadow-sm" />
+                          <Input placeholder="e.g. Ake I" {...field} className="bg-card border-border rounded-xl h-11 px-4 text-sm focus:border-primary/60 transition-all duration-300 shadow-sm" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -121,7 +121,7 @@ const Contact = () => {
                       <FormItem>
                         <FormLabel className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Email</FormLabel>
                         <FormControl>
-                          <Input type="email" placeholder="you@email.com" {...field} className="bg-white border-border rounded-xl h-11 px-4 text-sm focus:border-primary/60 transition-all duration-300 shadow-sm" />
+                          <Input type="email" placeholder="you@email.com" {...field} className="bg-card border-border rounded-xl h-11 px-4 text-sm focus:border-primary/60 transition-all duration-300 shadow-sm" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -130,7 +130,7 @@ const Contact = () => {
                       <FormItem>
                         <FormLabel className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Phone</FormLabel>
                         <FormControl>
-                          <Input placeholder="+234..." {...field} className="bg-white border-border rounded-xl h-11 px-4 text-sm focus:border-primary/60 transition-all duration-300 shadow-sm" />
+                          <Input placeholder="+234..." {...field} className="bg-card border-border rounded-xl h-11 px-4 text-sm focus:border-primary/60 transition-all duration-300 shadow-sm" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -141,11 +141,11 @@ const Contact = () => {
                       <FormLabel className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Role</FormLabel>
                       <Select onValueChange={field.onChange} value={field.value}>
                         <FormControl>
-                          <SelectTrigger className="bg-white border-border rounded-xl h-11 px-4 text-sm shadow-sm">
+                          <SelectTrigger className="bg-card border-border rounded-xl h-11 px-4 text-sm shadow-sm">
                             <SelectValue placeholder="Select your role" />
                           </SelectTrigger>
                         </FormControl>
-                        <SelectContent className="bg-white border-border rounded-xl shadow-lg">
+                        <SelectContent className="bg-card border-border rounded-xl shadow-lg">
                           {roles.map((r) => (
                             <SelectItem key={r} value={r} className="text-sm">{r}</SelectItem>
                           ))}
@@ -158,7 +158,7 @@ const Contact = () => {
                     <FormItem>
                       <FormLabel className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Message</FormLabel>
                       <FormControl>
-                        <Textarea rows={4} placeholder="Your message..." {...field} className="bg-white border-border rounded-xl px-4 py-3 text-sm resize-none focus:border-primary/60 transition-all duration-300 shadow-sm" />
+                        <Textarea rows={4} placeholder="Your message..." {...field} className="bg-card border-border rounded-xl px-4 py-3 text-sm resize-none focus:border-primary/60 transition-all duration-300 shadow-sm" />
                       </FormControl>
                       <FormMessage />
                     </FormItem>

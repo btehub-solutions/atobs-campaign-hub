@@ -90,7 +90,7 @@ const AIAssistant = () => {
           >
             <button
               onClick={() => setIsOpen(true)}
-              className="group relative flex h-14 w-14 items-center justify-center rounded-full bg-primary hover:bg-primary/90 text-white shadow-[0_8px_30px_hsl(152_62%_42%/0.4)] transition-all duration-300 hover:scale-[1.05] border border-white/20 pointer-events-auto"
+              className="group relative flex h-14 w-14 items-center justify-center rounded-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-[0_8px_30px_hsl(152_62%_42%/0.4)] transition-all duration-300 hover:scale-[1.05] border border-primary/20 pointer-events-auto"
             >
               <MessageSquare size={24} />
             </button>
@@ -103,7 +103,7 @@ const AIAssistant = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 5 }}
                   transition={{ duration: 0.3 }}
-                  className="absolute -top-12 right-0 whitespace-nowrap rounded-lg bg-background/90 px-3 py-1.5 text-xs font-medium text-foreground shadow-lg backdrop-blur-sm border border-border/40 pointer-events-none"
+                  className="absolute -top-12 right-0 whitespace-nowrap rounded-lg bg-card/90 px-3 py-1.5 text-xs font-medium text-foreground shadow-lg backdrop-blur-sm border border-border/40 pointer-events-none"
                 >
                   Chat with LADEF AI
                 </motion.div>
@@ -120,13 +120,12 @@ const AIAssistant = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="fixed bottom-6 right-6 z-50 flex h-[500px] w-[350px] sm:w-[400px] flex-col overflow-hidden rounded-2xl border border-border/40 bg-background/95 shadow-2xl backdrop-blur-xl"
+            className="fixed bottom-6 right-6 z-50 flex h-[500px] w-[350px] sm:w-[400px] flex-col overflow-hidden rounded-2xl border border-border/40 bg-card/95 shadow-2xl backdrop-blur-xl"
           >
             {/* Header */}
             <div className="flex items-center justify-between border-b border-border/20 bg-gradient-to-r from-primary/[0.08] to-accent/[0.05] p-4 relative overflow-hidden">
-               <div className="absolute inset-0 bg-[url('/parallax/rock.png')] opacity-5 bg-cover bg-center pointer-events-none mix-blend-overlay" />
               <div className="flex items-center gap-3 relative z-10">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border-[1.5px] border-primary/30 shadow-sm bg-white">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border-[1.5px] border-primary/30 shadow-sm bg-card">
                   <img src="/ladef-logo-trimmed.png" alt="LADEF" className="h-full w-full object-cover" />
                 </div>
                 <div>
@@ -167,7 +166,7 @@ const AIAssistant = () => {
                   animate={{ opacity: 1, y: 0 }}
                   className={`flex items-start gap-3 ${msg.role === "user" ? "flex-row-reverse" : "flex-row"}`}
                 >
-                  <div className={`flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full shadow-sm border border-border/50 ${msg.role === "user" ? "bg-primary/5 text-primary" : "bg-white"}`}>
+                  <div className={`flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full shadow-sm border border-border/50 ${msg.role === "user" ? "bg-primary/5 text-primary" : "bg-card"}`}>
                     {msg.role === "user" ? <User size={14} /> : <img src="/ladef-logo-trimmed.png" alt="LADEF" className="h-full w-full object-cover" />}
                   </div>
                   
@@ -225,7 +224,7 @@ const AIAssistant = () => {
             )}
 
             {/* Input Area */}
-            <div className="border-t border-border/20 p-4 bg-background">
+            <div className="border-t border-border/20 p-4 bg-card">
               <form
                 onSubmit={(e) => { e.preventDefault(); handleSend(inputValue); }}
                 className="relative flex items-center"
@@ -235,7 +234,7 @@ const AIAssistant = () => {
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   placeholder="Ask me anything..."
-                  className="w-full rounded-full border border-border/40 bg-muted/30 py-3 pl-4 pr-12 text-sm text-foreground outline-none focus:border-primary/50 focus:bg-background transition-all"
+                  className="w-full rounded-full border border-border/40 bg-muted/30 py-3 pl-4 pr-12 text-sm text-foreground outline-none focus:border-primary/50 focus:bg-card transition-all"
                   disabled={messages[messages.length - 1]?.isTyping}
                 />
                 <button
