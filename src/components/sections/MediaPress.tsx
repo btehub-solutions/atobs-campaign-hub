@@ -13,11 +13,11 @@ const categoryStyles: Record<string, string> = {
 
 const MediaPress = () => {
   return (
-    <section id="media" className="py-32 relative overflow-hidden">
+    <section id="media" className="py-40 relative overflow-hidden">
       <div className="section-divider absolute top-0 left-0 w-full" />
 
       <div className="section-container relative z-10">
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-16 gap-6">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-20 gap-6">
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -47,7 +47,7 @@ const MediaPress = () => {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {mediaItems.map((item, i) => {
             const variantPatterns = [
               "bento-card-primary", // Deep Green

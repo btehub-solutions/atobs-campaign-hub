@@ -46,7 +46,7 @@ const Testimonials = () => {
   };
 
   return (
-    <section id="testimonials" className="py-32 relative overflow-hidden">
+    <section id="testimonials" className="py-40 relative overflow-hidden">
       <div className="section-divider absolute top-0 left-0 w-full" />
 
       <div className="section-container relative z-10">
@@ -56,7 +56,7 @@ const Testimonials = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
           <span className="section-badge mb-6 inline-flex">Voices of the People</span>
           <h2 className="font-heading text-4xl sm:text-5xl lg:text-[3.5rem] font-bold tracking-tight mb-5 leading-[1.05]">

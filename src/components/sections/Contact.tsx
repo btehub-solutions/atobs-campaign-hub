@@ -42,7 +42,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-32 relative overflow-hidden">
+    <section id="contact" className="py-40 relative overflow-hidden">
       <div className="section-divider absolute top-0 left-0 w-full" />
 
       <div className="section-container relative z-10">

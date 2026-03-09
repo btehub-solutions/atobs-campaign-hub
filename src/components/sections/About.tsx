@@ -3,7 +3,7 @@ import { ArrowUpRight, Award, Users, Handshake, Star, Heart, Landmark, Zap } fro
 
 const About = () => {
   return (
-    <section id="about" className="py-32 relative overflow-hidden">
+    <section id="about" className="py-40 relative overflow-hidden">
       {/* Background Elements removed to enforce solid ash background */}
       <div className="section-divider absolute top-0 left-0 w-full" />
 

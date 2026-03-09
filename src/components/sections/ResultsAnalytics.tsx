@@ -73,19 +73,19 @@ const StatCard = ({ card, index }: { card: MetricCard; index: number }) => {
       {!dark && (
         <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
       )}
-      <div className="relative z-10">
+      <div className="relative z-10 text-center">
         {Icon && (
-          <div className={`w-11 h-11 rounded-xl flex items-center justify-center mb-5 group-hover:scale-105 transition-all duration-300 ${dark ? "bg-white/15 group-hover:bg-white/20" : "bg-primary/10 group-hover:bg-primary/14"}`}>
-            <Icon className={dark ? "text-white" : "text-primary"} size={20} />
+          <div className={`w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-5 group-hover:scale-105 transition-all duration-300 ${dark ? "bg-white/15 group-hover:bg-white/20" : "bg-primary/10 group-hover:bg-primary/14"}`}>
+            <Icon className={dark ? "text-white" : "text-primary"} size={22} />
           </div>
         )}
         <p className="text-[10px] font-semibold uppercase tracking-[0.2em] mb-3">{card.label}</p>
-        <div className="font-stats text-4xl sm:text-5xl lg:text-6xl flex flex-wrap items-baseline gap-1 leading-none">
+        <div className="font-stats text-5xl sm:text-6xl lg:text-7xl leading-none mb-1">
           <span>{displayValue}</span>
-          {card.suffix && <span className="text-2xl sm:text-3xl">{card.suffix}</span>}
+          {card.suffix && <span className="text-2xl sm:text-3xl ml-1">{card.suffix}</span>}
         </div>
         {card.trend && (
-          <p className="text-[11px] mt-4 flex items-center gap-2 font-medium">
+          <p className="text-[11px] mt-4 flex items-center justify-center gap-2 font-medium">
             <span className={`inline-block w-1.5 h-1.5 rounded-full animate-pulse ${dark ? "bg-white" : "bg-primary"}`} />
             {card.trend}
           </p>
@@ -111,16 +111,16 @@ const ProgressCard = ({ card, index }: { card: MetricCard; index: number }) => {
       transition={{ delay: index * 0.05, duration: 0.5 }}
       className={`${card.span} bento-card-warm group`}
     >
-      <div className="relative z-10">
+      <div className="relative z-10 text-center">
         {Icon && (
-          <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/14 group-hover:scale-105 transition-all duration-300">
-            <Icon className="text-primary" size={20} />
+          <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/14 group-hover:scale-105 transition-all duration-300">
+            <Icon className="text-primary" size={22} />
           </div>
         )}
         <p className="text-[10px] font-semibold uppercase tracking-[0.2em] mb-2">{card.label}</p>
-        <div className="font-stats text-4xl sm:text-5xl flex flex-wrap items-baseline gap-1 leading-none mb-1 text-balance">
+        <div className="font-stats text-4xl sm:text-5xl leading-none mb-1 text-balance">
           <span>{card.value}</span>
-          {card.suffix && <span className="text-xl sm:text-3xl">{card.suffix}</span>}
+          {card.suffix && <span className="text-xl sm:text-3xl ml-1">{card.suffix}</span>}
         </div>
         {card.description && <p className="text-[11px] mb-5">{card.description}</p>}
         <div className="w-full h-1 rounded-full bg-muted/60 overflow-hidden">
@@ -138,19 +138,27 @@ const ProgressCard = ({ card, index }: { card: MetricCard; index: number }) => {
 
 /* ── Highlight Card ── */
 const HighlightCard = ({ card, index }: { card: MetricCard; index: number }) => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-50px" });
+  const numericValue = parseInt(card.value?.replace(/[^0-9]/g, "") || "0");
+  const suffix = card.value?.replace(/[0-9,.​\s]/g, "") || "";
+  const count = useCountUp(numericValue, 2, inView);
+  const displayValue = count >= 1000 ? count.toLocaleString() : count.toString();
+
   return (
     <motion.div
+      ref={ref}
       initial={{ opacity: 0, y: 25, scale: 0.97 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ delay: index * 0.05, duration: 0.5 }}
       className={`${card.span} bento-card-dark group`}
     >
-      <div className="relative z-10 flex flex-col h-full justify-center">
-        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] mb-3">{card.label}</p>
-        <span className="font-stats text-6xl sm:text-7xl lg:text-8xl text-[#C5A54B] block leading-none mb-4">{card.value}</span>
+      <div className="relative z-10 flex flex-col h-full justify-center text-center">
+        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] mb-4">{card.label}</p>
+        <span className="font-stats text-6xl sm:text-7xl lg:text-8xl text-[#C5A54B] block leading-none mb-5">{displayValue}{suffix}</span>
         {card.description && (
-          <p className="text-[13px] leading-[1.7]">{card.description}</p>
+          <p className="text-[13px] leading-[1.7] max-w-[32ch] mx-auto">{card.description}</p>
         )}
       </div>
     </motion.div>
@@ -260,7 +268,7 @@ const ResultsAnalytics = () => {
   };
 
   return (
-    <section id="results" className="py-32 relative overflow-hidden">
+    <section id="results" className="py-40 relative overflow-hidden">
       <div className="section-divider absolute top-0 left-0 w-full" />
 
       <div className="section-container relative z-10">
@@ -286,11 +294,11 @@ const ResultsAnalytics = () => {
           whileInView={{ scaleX: 1 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="w-20 h-0.5 bg-gradient-to-r from-primary to-accent mx-auto mb-16 origin-left"
+          className="w-20 h-0.5 bg-gradient-to-r from-primary to-accent mx-auto mb-20 origin-left"
         />
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 auto-rows-auto">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 auto-rows-auto">
           {analyticsMetrics.map((card, i) => renderCard(card, i))}
         </div>
 

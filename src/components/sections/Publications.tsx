@@ -64,7 +64,7 @@ const DocumentCard = ({ magazine, index }: { magazine: typeof magazines[0], inde
 
 const Publications = () => {
   return (
-    <section id="publications" className="py-32 relative overflow-hidden">
+    <section id="publications" className="py-40 relative overflow-hidden">
       {/* Background aesthetics */}
       <div className="section-divider absolute top-0 left-0 w-full" />
       <div className="section-divider absolute bottom-0 left-0 w-full" />

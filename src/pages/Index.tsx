@@ -36,7 +36,7 @@ const Index = () => {
       >
         
         {/* Micro Grid Overlay for structural depth */}
-        <div className="absolute inset-0 micro-grid opacity-[0.35]" />
+        <div className="absolute inset-0 micro-grid opacity-50" />
 
         {/* Spotlight Vignette to soften edges and focus center removed to keep pure ash */}
         

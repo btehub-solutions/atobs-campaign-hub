@@ -76,7 +76,7 @@ const galleryItems: any[] = [
 
 const Gallery = () => {
   return (
-    <section id="gallery" className="py-32 relative overflow-hidden">
+    <section id="gallery" className="py-40 relative overflow-hidden">
       {/* Ambient Mesh Glows removed to enforce solid ash background */}
       
       <div className="section-divider absolute top-0 left-0 w-full" />
@@ -87,7 +87,7 @@ const Gallery = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 px-4"
+          className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-20 px-4"
         >
           <div className="max-w-2xl">
             <span className="section-badge mb-6 inline-flex border-primary/20 bg-primary/5 text-primary">The Art of Impact</span>

@@ -41,7 +41,7 @@ const WardTracker = () => {
   const strongCount = wards.filter((w) => w.status === "Strong").length;
 
   return (
-    <section id="wards" className="py-32 relative overflow-hidden">
+    <section id="wards" className="py-40 relative overflow-hidden">
       <div className="section-divider absolute top-0 left-0 w-full" />
 
       <div className="section-container relative z-10">
@@ -67,7 +67,7 @@ const WardTracker = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ delay: 0.1, duration: 0.5 }}
-          className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-10"
+          className="grid grid-cols-2 sm:grid-cols-4 gap-5 mb-10"
         >
           {[
             { icon: MapPin, value: "15", label: "Total Wards", variant: "bento-card-primary", iconColor: "text-white", iconBg: "bg-white/15" },

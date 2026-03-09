@@ -146,14 +146,14 @@
 
   /* ─── Shopify-style Glass Card ─── */
   .glass-card {
-    background: linear-gradient(145deg, hsl(0 0% 100% / 0.7), hsl(0 0% 100% / 0.3));
+    background: linear-gradient(145deg, hsl(0 0% 100% / 0.85), hsl(0 0% 100% / 0.6));
     backdrop-filter: blur(12px) saturate(150%);
     -webkit-backdrop-filter: blur(12px) saturate(150%);
-    border: 1px solid hsl(0 0% 100% / 0.6);
+    border: 1px solid hsl(220 20% 88%);
     box-shadow: 
-      0 8px 32px hsl(0 0% 0% / 0.04), 
-      inset 0 1px 0 hsl(0 0% 100% / 0.8),
-      inset 0 -1px 0 hsl(0 0% 0% / 0.02);
+      0 1px 2px hsl(0 0% 0% / 0.04),
+      0 4px 16px hsl(0 0% 0% / 0.06),
+      0 8px 32px hsl(0 0% 0% / 0.04);
   }
 
   /* ─── Premium Glow Effects ─── */
@@ -237,22 +237,21 @@
 
   .bento-card {
     @apply relative rounded-2xl p-7 overflow-hidden bg-card;
-    background: linear-gradient(145deg, hsl(var(--card)) 80%, hsl(var(--card) / 0.4) 100%);
-    backdrop-filter: blur(12px) saturate(150%);
-    -webkit-backdrop-filter: blur(12px) saturate(150%);
-    border: 1px solid hsl(var(--border));
+    background: hsl(var(--card));
+    border: 1px solid hsl(220 20% 88%);
     box-shadow: 
-      0 4px 20px hsl(0 0% 0% / 0.03),
-      inset 0 1px 0 hsl(0 0% 100% / 0.9);
+      0 1px 2px hsl(0 0% 0% / 0.04),
+      0 4px 12px hsl(0 0% 0% / 0.06),
+      0 8px 24px hsl(0 0% 0% / 0.04);
     transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .bento-card:hover {
-    border-color: hsl(0 0% 100% / 1);
+    border-color: hsl(220 20% 82%);
     transform: translateY(-4px) scale(1.005);
     box-shadow: 
-      0 12px 30px hsl(0 0% 0% / 0.08),
-      0 0 0 1px hsl(152 62% 42% / 0.1),
-      inset 0 1px 0 hsl(0 0% 100% / 1);
+      0 4px 8px hsl(0 0% 0% / 0.06),
+      0 12px 30px hsl(0 0% 0% / 0.1),
+      0 0 0 1px hsl(152 62% 42% / 0.08);
   }
 
   /* ─── Branded Bento Variants ─── */
@@ -340,38 +339,40 @@
   .bento-card-tint {
     @apply relative rounded-2xl p-7 overflow-hidden bg-card;
     background: linear-gradient(145deg, hsl(152 40% 96%) 0%, hsl(152 30% 92%) 100%);
-    border: 1px solid hsl(152 40% 85%);
+    border: 1px solid hsl(152 40% 82%);
     box-shadow:
-      0 4px 20px hsl(152 40% 50% / 0.06),
-      inset 0 1px 0 hsl(0 0% 100% / 0.9);
+      0 1px 2px hsl(0 0% 0% / 0.04),
+      0 4px 12px hsl(152 30% 40% / 0.08),
+      0 8px 24px hsl(0 0% 0% / 0.04);
     transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .bento-card-tint:hover {
     transform: translateY(-4px) scale(1.005);
-    border-color: hsl(152 50% 75%);
+    border-color: hsl(152 50% 72%);
     box-shadow:
-      0 12px 30px hsl(152 40% 50% / 0.1),
-      0 0 0 1px hsl(152 62% 42% / 0.1),
-      inset 0 1px 0 hsl(0 0% 100% / 1);
+      0 4px 8px hsl(0 0% 0% / 0.06),
+      0 12px 30px hsl(152 40% 40% / 0.12),
+      0 0 0 1px hsl(152 62% 42% / 0.1);
   }
 
   /* Warm Cream (soft gold tint) */
   .bento-card-warm {
     @apply relative rounded-2xl p-7 overflow-hidden bg-card;
     background: linear-gradient(145deg, hsl(42 50% 96%) 0%, hsl(38 40% 92%) 100%);
-    border: 1px solid hsl(42 40% 87%);
+    border: 1px solid hsl(42 40% 82%);
     box-shadow:
-      0 4px 20px hsl(42 40% 50% / 0.06),
-      inset 0 1px 0 hsl(0 0% 100% / 0.9);
+      0 1px 2px hsl(0 0% 0% / 0.04),
+      0 4px 12px hsl(42 30% 40% / 0.08),
+      0 8px 24px hsl(0 0% 0% / 0.04);
     transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .bento-card-warm:hover {
     transform: translateY(-4px) scale(1.005);
-    border-color: hsl(42 50% 80%);
+    border-color: hsl(42 50% 75%);
     box-shadow:
-      0 12px 30px hsl(42 40% 50% / 0.1),
-      0 0 0 1px hsl(45 80% 58% / 0.1),
-      inset 0 1px 0 hsl(0 0% 100% / 1);
+      0 4px 8px hsl(0 0% 0% / 0.06),
+      0 12px 30px hsl(42 40% 40% / 0.12),
+      0 0 0 1px hsl(45 80% 58% / 0.1);
   }
 
   /* ─── Gold Underline ─── */
@@ -446,10 +447,10 @@
   .micro-grid {
     background-size: 50px 50px;
     background-image: 
-      linear-gradient(to right, hsl(var(--foreground) / 0.035) 1px, transparent 1px),
-      linear-gradient(to bottom, hsl(var(--foreground) / 0.035) 1px, transparent 1px);
-    mask-image: radial-gradient(ellipse at center, black 40%, transparent 100%);
-    -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 100%);
+      linear-gradient(to right, hsl(var(--foreground) / 0.07) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--foreground) / 0.07) 1px, transparent 1px);
+    mask-image: radial-gradient(ellipse at center, black 70%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 70%, transparent 100%);
   }
 
   /* ─── Spotlight Vignette Overlay ─── */
