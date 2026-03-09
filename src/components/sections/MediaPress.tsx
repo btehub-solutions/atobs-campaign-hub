@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { mediaItems } from "@/lib/data/media";
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const categoryStyles: Record<string, string> = {
   Empowerment: "bg-primary/8 text-primary border-primary/15",
@@ -34,15 +35,15 @@ const MediaPress = () => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ delay: 0.3 }}
           >
-            <button className="btn-pill-outline text-xs">
+            <Link to="/media" className="btn-pill-outline text-xs inline-flex items-center gap-2">
               View All Coverage
               <ArrowUpRight size={13} />
-            </button>
+            </Link>
           </motion.div>
         </div>
 

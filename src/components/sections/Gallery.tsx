@@ -1,78 +1,7 @@
 import { motion } from "framer-motion";
-import { Camera, Users, HeartHandshake, GraduationCap, Landmark, Megaphone, TreePine, Sparkles } from "lucide-react";
-
-const galleryItems: any[] = [
-  { 
-    id: 1,
-    icon: Users, 
-    tag: "Grassroots",
-    title: "Community Engagement", 
-    desc: "Direct dialogue and empowerment programs reaching every ward.", 
-    className: "md:col-span-2 md:row-span-2",
-    gradient: "from-primary/10 to-transparent",
-    hasImage: false
-  },
-  { 
-    id: 2,
-    icon: GraduationCap, 
-    tag: "Education",
-    title: "Scholarship Initiatives", 
-    desc: "Investing in the future leaders of Ogun State.", 
-    className: "col-span-1 row-span-1",
-    gradient: "from-accent/20 to-accent/5",
-    hasImage: false
-  },
-  { 
-    id: 3,
-    icon: HeartHandshake, 
-    tag: "Consultation",
-    title: "Ward Dialogues", 
-    desc: "Understanding the true needs of the people.", 
-    className: "col-span-1 row-span-1",
-    gradient: "from-primary/20 to-primary/5",
-    hasImage: false
-  },
-  { 
-    id: 4,
-    icon: Landmark, 
-    tag: "Governance",
-    title: "Leadership Summit", 
-    desc: "Strategic forums to chart a course for sustainable development.", 
-    className: "md:col-span-2 row-span-1",
-    gradient: "from-accent/10 to-transparent",
-    hasImage: false
-  },
-  { 
-    id: 5,
-    icon: Megaphone, 
-    tag: "Civic Duty",
-    title: "Town Hall Meetings", 
-    desc: "Fostering open transparency and civic participation.", 
-    className: "col-span-1 row-span-1",
-    gradient: "from-primary/10 to-transparent",
-    hasImage: false
-  },
-  { 
-    id: 6,
-    icon: TreePine, 
-    tag: "Environment",
-    title: "Agricultural Push", 
-    desc: "Driving mechanized farming and food security.", 
-    className: "col-span-1 row-span-1",
-    gradient: "from-accent/10 to-transparent",
-    hasImage: false
-  },
-  { 
-    id: 7,
-    icon: Sparkles, 
-    tag: "Outreach",
-    title: "Massive Distributions", 
-    desc: "Delivering core democratic dividends to the grassroots.", 
-    className: "md:col-span-2 md:row-span-2",
-    gradient: "from-primary/10 to-transparent",
-    hasImage: false
-  },
-];
+import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import { galleryItems } from "@/lib/data/gallery";
 
 const Gallery = () => {
   return (
@@ -98,13 +27,12 @@ const Gallery = () => {
               Every policy, every outreach, every handshake is a stroke on the canvas of a better Abeokuta South. Dive into the visual story.
             </p>
           </div>
-          <motion.button 
-            whileHover={{ y: -2 }}
-            whileTap={{ y: 0 }}
-            className="btn-pill-outline shrink-0 self-start md:self-auto hidden sm:flex"
+          <Link 
+            to="/gallery"
+            className="btn-pill-outline shrink-0 self-start md:self-auto hidden sm:flex items-center gap-2"
           >
             View Full Archive
-          </motion.button>
+          </Link>
         </motion.div>
 
         {/* Asymmetric Artistry Bento Grid */}
@@ -184,13 +112,12 @@ const Gallery = () => {
         </div>
         
         <div className="mt-10 sm:hidden flex justify-center">
-          <motion.button 
-            whileHover={{ y: -2 }}
-            whileTap={{ y: 0 }}
+          <Link 
+            to="/gallery"
             className="btn-pill-outline"
           >
             View Full Archive
-          </motion.button>
+          </Link>
         </div>
       </div>
     </section>

@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import Navbar from "@/components/nav/Navbar";
 import Hero from "@/components/sections/Hero";
@@ -16,8 +16,30 @@ const Footer = lazy(() => import("@/components/footer/Footer"));
 const Publications = lazy(() => import("@/components/sections/Publications"));
 const AIAssistant = lazy(() => import("@/components/ui/AIAssistant"));
 
+import { useLocation } from "react-router-dom";
+
 const Index = () => {
   const { scrollYProgress } = useScroll();
+  const { hash } = useLocation();
+
+  // Handle hash scrolling for return navigation
+  useEffect(() => {
+    if (hash) {
+      // Small timeout to allow lazy-loaded sections to potentially mount
+      const timer = setTimeout(() => {
+        const element = document.querySelector(hash);
+        if (element) {
+          const offset = 80;
+          const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({
+            top: elementPosition - offset,
+            behavior: "smooth"
+          });
+        }
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [hash]);
 
   // Scroll-driven background color shift
   const backgroundColor = useTransform(
