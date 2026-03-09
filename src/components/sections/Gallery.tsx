@@ -77,9 +77,7 @@ const galleryItems: any[] = [
 const Gallery = () => {
   return (
     <section id="gallery" className="py-32 relative overflow-hidden">
-      {/* Intense Ambient Mesh Glows (Shopify Style) */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80vw] h-[500px] bg-primary/5 rounded-full blur-[60px] pointer-events-none" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[600px] bg-accent/5 rounded-full blur-[80px] pointer-events-none" />
+      {/* Ambient Mesh Glows removed to enforce solid ash background */}
       
       <div className="section-divider absolute top-0 left-0 w-full" />
 

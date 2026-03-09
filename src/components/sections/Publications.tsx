@@ -67,8 +67,7 @@ const Publications = () => {
     <section id="publications" className="py-32 relative overflow-hidden">
       {/* Background aesthetics */}
       <div className="section-divider absolute top-0 left-0 w-full" />
-      <div className="absolute top-1/2 left-1/4 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[60px] pointer-events-none -translate-y-1/2 -translate-x-1/2" />
-      <div className="absolute top-1/2 right-1/4 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[60px] pointer-events-none -translate-y-1/2 translate-x-1/2" />
+      <div className="section-divider absolute bottom-0 left-0 w-full" />
       
       <div className="section-container relative z-10">
         <motion.div

@@ -21,6 +21,14 @@ const useCountUp = (target: number, duration = 2, inView = false) => {
 };
 
 /* ── Stat Card ── */
+const cardColorMap: Record<string, string> = {
+  primary: "bento-card-tint",
+  accent: "bento-card-warm",
+  destructive: "bento-card-accent",
+};
+
+const isDarkColor = (color?: string) => color === "destructive";
+
 const StatCard = ({ card, index }: { card: MetricCard; index: number }) => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-50px" });
@@ -35,6 +43,8 @@ const StatCard = ({ card, index }: { card: MetricCard; index: number }) => {
       : count.toString();
 
   const cardRef = useRef<HTMLDivElement>(null);
+  const variant = card.color ? cardColorMap[card.color] || "bento-card" : "bento-card";
+  const dark = isDarkColor(card.color);
   
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
@@ -58,31 +68,25 @@ const StatCard = ({ card, index }: { card: MetricCard; index: number }) => {
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ delay: index * 0.05, duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className={`${card.span} bento-card group relative overflow-hidden`}
+      className={`${card.span} ${variant} group relative overflow-hidden`}
     >
-      {/* Smart Hover Spotlight */}
-      <div 
-        className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition duration-300 group-hover:opacity-100"
-        style={{
-          background: `radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(16, 185, 129, 0.1), transparent 40%)`
-        }}
-      />
-      
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+      {!dark && (
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+      )}
       <div className="relative z-10">
         {Icon && (
-          <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/14 group-hover:scale-105 transition-all duration-300">
-            <Icon className="text-primary" size={20} />
+          <div className={`w-11 h-11 rounded-xl flex items-center justify-center mb-5 group-hover:scale-105 transition-all duration-300 ${dark ? "bg-white/15 group-hover:bg-white/20" : "bg-primary/10 group-hover:bg-primary/14"}`}>
+            <Icon className={dark ? "text-white" : "text-primary"} size={20} />
           </div>
         )}
-        <p className="text-muted-foreground text-[10px] font-semibold uppercase tracking-[0.2em] mb-3">{card.label}</p>
-        <div className="font-stats text-4xl sm:text-5xl lg:text-6xl text-foreground flex flex-wrap items-baseline gap-1 leading-none">
+        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] mb-3">{card.label}</p>
+        <div className="font-stats text-4xl sm:text-5xl lg:text-6xl flex flex-wrap items-baseline gap-1 leading-none">
           <span>{displayValue}</span>
-          {card.suffix && <span className="text-accent text-2xl sm:text-3xl">{card.suffix}</span>}
+          {card.suffix && <span className="text-2xl sm:text-3xl">{card.suffix}</span>}
         </div>
         {card.trend && (
-          <p className="text-primary text-[11px] mt-4 flex items-center gap-2 font-medium">
-            <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+          <p className="text-[11px] mt-4 flex items-center gap-2 font-medium">
+            <span className={`inline-block w-1.5 h-1.5 rounded-full animate-pulse ${dark ? "bg-white" : "bg-primary"}`} />
             {card.trend}
           </p>
         )}
@@ -105,21 +109,20 @@ const ProgressCard = ({ card, index }: { card: MetricCard; index: number }) => {
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ delay: index * 0.05, duration: 0.5 }}
-      className={`${card.span} bento-card group`}
+      className={`${card.span} bento-card-warm group`}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-accent/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
       <div className="relative z-10">
         {Icon && (
-          <div className="w-11 h-11 rounded-xl bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/14 group-hover:scale-105 transition-all duration-300">
-            <Icon className="text-accent" size={20} />
+          <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/14 group-hover:scale-105 transition-all duration-300">
+            <Icon className="text-primary" size={20} />
           </div>
         )}
-        <p className="text-muted-foreground text-[10px] font-semibold uppercase tracking-[0.2em] mb-2">{card.label}</p>
-        <div className="font-stats text-4xl sm:text-5xl text-foreground flex flex-wrap items-baseline gap-1 leading-none mb-1 text-balance">
+        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] mb-2">{card.label}</p>
+        <div className="font-stats text-4xl sm:text-5xl flex flex-wrap items-baseline gap-1 leading-none mb-1 text-balance">
           <span>{card.value}</span>
-          {card.suffix && <span className="text-accent text-xl sm:text-3xl">{card.suffix}</span>}
+          {card.suffix && <span className="text-xl sm:text-3xl">{card.suffix}</span>}
         </div>
-        {card.description && <p className="text-muted-foreground text-[11px] mb-5">{card.description}</p>}
+        {card.description && <p className="text-[11px] mb-5">{card.description}</p>}
         <div className="w-full h-1 rounded-full bg-muted/60 overflow-hidden">
           <motion.div
             initial={{ width: 0 }}
@@ -141,13 +144,13 @@ const HighlightCard = ({ card, index }: { card: MetricCard; index: number }) => 
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ delay: index * 0.05, duration: 0.5 }}
-      className={`${card.span} bento-card group gradient-border`}
+      className={`${card.span} bento-card-dark group`}
     >
       <div className="relative z-10 flex flex-col h-full justify-center">
-        <p className="text-muted-foreground text-[10px] font-semibold uppercase tracking-[0.2em] mb-3">{card.label}</p>
+        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] mb-3">{card.label}</p>
         <span className="font-stats text-6xl sm:text-7xl lg:text-8xl text-[#C5A54B] block leading-none mb-4">{card.value}</span>
         {card.description && (
-          <p className="text-muted-foreground text-[13px] leading-[1.7]">{card.description}</p>
+          <p className="text-[13px] leading-[1.7]">{card.description}</p>
         )}
       </div>
     </motion.div>
@@ -228,17 +231,16 @@ const QuoteCard = ({ card, index }: { card: MetricCard; index: number }) => (
     whileInView={{ opacity: 1, y: 0, scale: 1 }}
     viewport={{ once: true, margin: "-50px" }}
     transition={{ delay: index * 0.05, duration: 0.5 }}
-    className={`${card.span} bento-card gradient-border overflow-hidden`}
+    className={`${card.span} bento-card-primary overflow-hidden`}
   >
-    <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.03] via-transparent to-accent/[0.02] rounded-2xl" />
-    <Quote className="absolute top-6 right-6 text-accent/[0.06]" size={56} />
+    <Quote className="absolute top-6 right-6 text-white/10" size={56} />
     <div className="relative z-10">
-      <p className="font-display text-lg sm:text-xl italic text-foreground/90 leading-[1.6] mb-5">
+      <p className="font-display text-lg sm:text-xl italic leading-[1.6] mb-5">
         "{card.description}"
       </p>
       <div className="flex items-center gap-3">
-        <div className="w-8 h-0.5 bg-gradient-to-r from-accent to-accent/20 rounded-full" />
-        <span className="text-accent text-xs font-semibold">{card.label}</span>
+        <div className="w-8 h-0.5 bg-gradient-to-r from-[#C5A54B] to-[#C5A54B]/20 rounded-full" />
+        <span className="text-[#C5A54B] text-xs font-semibold">{card.label}</span>
       </div>
     </div>
   </motion.div>
@@ -259,20 +261,6 @@ const ResultsAnalytics = () => {
 
   return (
     <section id="results" className="py-32 relative overflow-hidden">
-      {/* Background - Smart Data Nodes Aesthetic */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none opacity-20" />
-      
-      <motion.div 
-        animate={{ rotate: 360 }}
-        transition={{ duration: 150, repeat: Infinity, ease: "linear" }}
-        className="absolute top-1/4 -right-[20%] w-[60%] aspect-square rounded-full border border-primary/10 border-dashed pointer-events-none opacity-50" 
-      />
-      <motion.div 
-        animate={{ rotate: -360 }}
-        transition={{ duration: 200, repeat: Infinity, ease: "linear" }}
-        className="absolute bottom-1/4 -left-[20%] w-[60%] aspect-square rounded-full border border-accent/10 border-dashed pointer-events-none opacity-50" 
-      />
-
       <div className="section-divider absolute top-0 left-0 w-full" />
 
       <div className="section-container relative z-10">

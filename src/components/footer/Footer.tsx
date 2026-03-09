@@ -14,7 +14,6 @@ const Footer = () => {
 
       {/* CTA band */}
       <div className="py-12 sm:py-24 relative">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_100%,hsl(152_62%_42%/0.04),transparent)] pointer-events-none" />
         <div className="section-container relative z-10 text-center">
           <h3 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-5 leading-[1.05]">
             Ready to build <span className="gradient-text">together?</span>
@@ -38,7 +37,7 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-10 mb-8 md:mb-12">
             {/* Brand */}
             <div className="md:col-span-1">
-              <div className="mb-4 sm:mb-5 relative h-16 sm:h-20 w-full flex items-center">
+              <div className="mb-4 sm:mb-5 relative h-10 sm:h-12 w-full flex items-center">
                 <img 
                   src="/ladef-logo-trimmed.png" 
                   alt="LADEF Logo" 

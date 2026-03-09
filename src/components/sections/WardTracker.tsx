@@ -70,18 +70,18 @@ const WardTracker = () => {
           className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-10"
         >
           {[
-            { icon: MapPin, value: "15", label: "Total Wards", color: "text-primary", bg: "bg-primary/8" },
-            { icon: Target, value: `${strongCount}`, label: "Strong Holds", color: "text-primary", bg: "bg-primary/8" },
-            { icon: FolderKanban, value: `${totalProjects}`, label: "Active Projects", color: "text-accent", bg: "bg-accent/8" },
-            { icon: TrendingUp, value: `${avgEngagement}%`, label: "Avg. Engagement", color: "text-primary", bg: "bg-primary/8" },
+            { icon: MapPin, value: "15", label: "Total Wards", variant: "bento-card-primary", iconColor: "text-white", iconBg: "bg-white/15" },
+            { icon: Target, value: `${strongCount}`, label: "Strong Holds", variant: "bento-card-dark", iconColor: "text-[#C5A54B]", iconBg: "bg-white/10" },
+            { icon: FolderKanban, value: `${totalProjects}`, label: "Active Projects", variant: "bento-card-accent", iconColor: "text-white", iconBg: "bg-white/15" },
+            { icon: TrendingUp, value: `${avgEngagement}%`, label: "Avg. Engagement", variant: "bento-card-tint", iconColor: "text-primary", iconBg: "bg-primary/10" },
           ].map((stat) => (
-            <div key={stat.label} className="bento-card !p-5 flex items-center gap-4">
-              <div className={`w-10 h-10 rounded-xl ${stat.bg} flex items-center justify-center flex-shrink-0`}>
-                <stat.icon className={stat.color} size={18} />
+            <div key={stat.label} className={`${stat.variant} !p-5 flex items-center gap-4`}>
+              <div className={`w-10 h-10 rounded-xl ${stat.iconBg} flex items-center justify-center flex-shrink-0`}>
+                <stat.icon className={stat.iconColor} size={18} />
               </div>
               <div>
-                <span className="font-stats text-2xl sm:text-3xl text-foreground block leading-none">{stat.value}</span>
-                <span className="text-[9px] text-muted-foreground mt-0.5 block uppercase tracking-wider font-medium">{stat.label}</span>
+                <span className="font-stats text-2xl sm:text-3xl block leading-none">{stat.value}</span>
+                <span className="text-[9px] mt-0.5 block uppercase tracking-wider font-medium opacity-80">{stat.label}</span>
               </div>
             </div>
           ))}
@@ -111,7 +111,9 @@ const WardTracker = () => {
 
         <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
           <AnimatePresence mode="popLayout">
-            {filtered.map((ward, i) => (
+            {filtered.map((ward, i) => {
+              const bgVariant = ward.status === "Strong" ? "bento-card-tint" : ward.status === "Target" ? "bento-card-warm" : "bento-card";
+              return (
               <motion.div
                 key={ward.name}
                 layout
@@ -119,7 +121,7 @@ const WardTracker = () => {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ delay: i * 0.025, duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="bento-card !p-5 !rounded-xl group cursor-pointer"
+                className={`${bgVariant} !p-5 !rounded-xl group cursor-pointer`}
               >
                 {/* Top row: Name + Status */}
                 <div className="flex items-center justify-between mb-4">
@@ -159,7 +161,8 @@ const WardTracker = () => {
                   <span className="ml-auto text-primary/70 font-medium">{ward.keyFocus}</span>
                 </div>
               </motion.div>
-            ))}
+              );
+            })}
           </AnimatePresence>
         </div>
       </div>

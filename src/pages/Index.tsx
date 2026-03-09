@@ -23,7 +23,7 @@ const Index = () => {
   const backgroundColor = useTransform(
     scrollYProgress,
     [0, 0.5, 1],
-    ["hsl(40, 20%, 98%)", "hsl(210, 20%, 98%)", "hsl(210, 30%, 95%)"]
+    ["hsl(220, 14%, 96%)", "hsl(220, 14%, 94%)", "hsl(220, 14%, 92%)"]
   );
 
   return (
@@ -36,17 +36,9 @@ const Index = () => {
       >
         
         {/* Micro Grid Overlay for structural depth */}
-        <div className="absolute inset-0 micro-grid opacity-[0.03]" />
+        <div className="absolute inset-0 micro-grid opacity-[0.35]" />
 
-        {/* Spotlight Vignette to soften edges and focus center */}
-        <div className="absolute inset-0 spotlight-vignette opacity-60" />
-
-        {/* Abstract animated gradient orbs */}
-        <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-primary/5 blur-[80px] opacity-40 will-change-transform transform-gpu animate-parallax-ambient-drift" />
-        
-        <div className="absolute top-[30%] right-[-5%] w-[40vw] h-[40vw] rounded-full bg-accent/10 blur-[80px] opacity-30 will-change-transform transform-gpu animate-parallax-ambient-drift" style={{ animationDelay: '5s' }} />
-
-        <div className="absolute bottom-[-20%] left-[20%] w-[60vw] h-[40vw] rounded-full bg-[hsl(210_40%_85%)] blur-[90px] opacity-50 will-change-transform transform-gpu animate-parallax-ambient-drift" style={{ animationDelay: '2s' }} />
+        {/* Spotlight Vignette to soften edges and focus center removed to keep pure ash */}
         
         {/* Animated Cinematic Grain replacing static noise */}
         <div className="animated-noise" />

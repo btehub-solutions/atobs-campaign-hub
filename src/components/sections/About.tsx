@@ -4,10 +4,8 @@ import { ArrowUpRight, Award, Users, Handshake, Star, Heart, Landmark, Zap } fro
 const About = () => {
   return (
     <section id="about" className="py-32 relative overflow-hidden">
-      {/* Background Elements */}
+      {/* Background Elements removed to enforce solid ash background */}
       <div className="section-divider absolute top-0 left-0 w-full" />
-      <div className="absolute top-1/4 -right-1/4 w-1/2 h-1/2 bg-primary/5 rounded-full blur-[60px] pointer-events-none" />
-      <div className="absolute bottom-0 -left-1/4 w-1/3 h-1/3 bg-accent/5 rounded-full blur-[60px] pointer-events-none" />
 
       <div className="section-container relative z-10 w-full px-4 md:px-8 max-w-7xl mx-auto">
         
@@ -117,19 +115,17 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="col-span-2 row-span-2 bento-card group cursor-pointer flex flex-col items-center justify-center text-center overflow-hidden relative"
+            className="col-span-2 row-span-2 bento-card-primary group cursor-pointer flex flex-col items-center justify-center text-center overflow-hidden relative"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent z-0 pointer-events-none" />
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.08] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl" />
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
             
             <div className="relative z-10 flex flex-col items-center p-6">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 shadow-inner">
-                <Landmark className="text-primary w-8 h-8 sm:w-10 sm:h-10" />
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white/15 border border-white/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 shadow-inner">
+                <Landmark className="text-white w-8 h-8 sm:w-10 sm:h-10" />
               </div>
-              <span className="text-[10px] text-primary font-bold tracking-[0.25em] uppercase block mb-3">Governance</span>
-              <h3 className="font-heading text-2xl font-bold text-foreground mb-3">People-Centric</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed max-w-[220px]">Formulating policies and interventions that place human capital development at the core.</p>
+              <span className="text-[10px] text-white/70 font-bold tracking-[0.25em] uppercase block mb-3">Governance</span>
+              <h3 className="font-heading text-2xl font-bold mb-3">People-Centric</h3>
+              <p className="text-sm leading-relaxed max-w-[220px]">Formulating policies and interventions that place human capital development at the core.</p>
             </div>
           </motion.div>
 
@@ -139,9 +135,8 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1, duration: 0.5 }}
-            className="col-span-1 row-span-1 bento-card flex flex-col justify-between group overflow-hidden relative"
+            className="col-span-1 row-span-1 bento-card-warm flex flex-col justify-between group overflow-hidden relative"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.02] to-card opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             <div className="relative z-10 flex flex-col justify-between h-full p-2">
               <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
                 <Users className="text-primary w-5 h-5" />
@@ -159,16 +154,15 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.5 }}
-            className="col-span-1 row-span-1 bento-card flex flex-col justify-between group bg-primary/[0.02]"
+            className="col-span-1 row-span-1 bento-card-accent flex flex-col justify-between group"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-accent/[0.06] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             <div className="relative z-10 flex flex-col justify-between h-full p-2">
-              <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center">
-                <Heart className="text-accent w-5 h-5" />
+              <div className="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center">
+                <Heart className="text-white w-5 h-5" />
               </div>
               <div>
-                <span className="font-stats text-4xl sm:text-5xl lg:text-4xl xl:text-5xl font-bold text-foreground block leading-none mb-1">236</span>
-                <span className="text-[10px] text-muted-foreground font-semibold uppercase tracking-wider">Wards Reached</span>
+                <span className="font-stats text-4xl sm:text-5xl lg:text-4xl xl:text-5xl font-bold block leading-none mb-1">236</span>
+                <span className="text-[10px] font-semibold uppercase tracking-wider">Wards Reached</span>
               </div>
             </div>
           </motion.div>
@@ -179,15 +173,15 @@ const About = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.5 }}
-            className="col-span-2 row-span-1 bento-card group cursor-pointer flex items-center gap-5 sm:gap-6 bg-accent/[0.02] border-accent/10 hover:border-accent/30 transition-colors"
+            className="col-span-2 row-span-1 bento-card-dark group cursor-pointer flex items-center gap-5 sm:gap-6 transition-colors"
           >
-            <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 ml-2">
-              <Zap className="text-accent w-7 h-7" />
+            <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 ml-2">
+              <Zap className="text-[#C5A54B] w-7 h-7" />
             </div>
             <div>
-              <span className="text-accent text-[11px] font-bold uppercase tracking-widest block mb-1.5">Actionable Vision</span>
-              <span className="text-foreground text-[15px] sm:text-base font-bold block mb-1">Economic Prosperity</span>
-              <span className="text-muted-foreground text-xs sm:text-sm leading-snug">Spurring wealth creation through mechanized agriculture and tech innovation.</span>
+              <span className="text-[#C5A54B] text-[11px] font-bold uppercase tracking-widest block mb-1.5">Actionable Vision</span>
+              <span className="text-[15px] sm:text-base font-bold block mb-1">Economic Prosperity</span>
+              <span className="text-xs sm:text-sm leading-snug">Spurring wealth creation through mechanized agriculture and tech innovation.</span>
             </div>
           </motion.div>
 
@@ -197,7 +191,7 @@ const About = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4, duration: 0.5 }}
-            className="col-span-1 row-span-1 bento-card group cursor-pointer flex flex-col items-center justify-center gap-4 bg-primary/[0.02]"
+            className="col-span-1 row-span-1 bento-card-tint group cursor-pointer flex flex-col items-center justify-center gap-4"
           >
             <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:-translate-y-1 transition-transform duration-300">
               <Star className="text-primary w-6 h-6" />
@@ -237,14 +231,14 @@ const About = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.6, duration: 0.5 }}
-            className="col-span-2 row-span-1 bento-card group cursor-pointer flex items-center gap-5 sm:gap-6 bg-accent/[0.01] border-primary/10 hover:border-primary/30"
+            className="col-span-2 row-span-1 bento-card-primary group cursor-pointer flex items-center gap-5 sm:gap-6"
           >
-            <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:-rotate-3 transition-all duration-300 ml-2">
-              <Handshake className="text-primary w-7 h-7" />
+            <div className="w-14 h-14 rounded-2xl bg-white/15 flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:-rotate-3 transition-all duration-300 ml-2">
+              <Handshake className="text-white w-7 h-7" />
             </div>
             <div>
-              <span className="text-foreground text-[15px] sm:text-base font-bold block mb-1.5">Grassroots Empowerment</span>
-              <span className="text-muted-foreground text-xs sm:text-sm leading-snug pr-4">Building a self-sustaining ecosystem of skilled youth and empowered women.</span>
+              <span className="text-[15px] sm:text-base font-bold block mb-1.5">Grassroots Empowerment</span>
+              <span className="text-xs sm:text-sm leading-snug pr-4">Building a self-sustaining ecosystem of skilled youth and empowered women.</span>
             </div>
           </motion.div>
           

@@ -6,8 +6,8 @@
 
 @layer base {
   :root {
-    /* Artistry Blended Canvas - Soft neutral ash (#F8F9FA) */
-    --background: 210 17% 98%;
+    /* Premium Deep Ash Background (#F3F4F6) */
+    --background: 220 14% 96%;
     
     /* Deep Rich Typography */
     --foreground: 220 30% 12%;
@@ -71,9 +71,8 @@
 
   body {
     @apply text-foreground antialiased;
-    /* Soft premium gradient (INBIO style) */
-    background: linear-gradient(145deg, #f4f5f6 0%, #ffffff 100%);
-    background-attachment: fixed;
+    /* Solid premium ash background — no white bleed */
+    background: hsl(var(--background));
     font-family: "Inter", system-ui, -apple-system, sans-serif;
     overflow-x: hidden;
     letter-spacing: -0.01em;
@@ -256,6 +255,125 @@
       inset 0 1px 0 hsl(0 0% 100% / 1);
   }
 
+  /* ─── Branded Bento Variants ─── */
+
+  /* Deep Green (Primary) */
+  .bento-card-primary {
+    @apply relative rounded-2xl p-7 overflow-hidden;
+    background: linear-gradient(145deg, hsl(152 62% 38%) 0%, hsl(152 55% 30%) 100%);
+    border: 1px solid hsl(152 62% 50% / 0.3);
+    box-shadow:
+      0 4px 20px hsl(152 62% 20% / 0.15),
+      inset 0 1px 0 hsl(0 0% 100% / 0.12);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .bento-card-primary,
+  .bento-card-primary h3,
+  .bento-card-primary span,
+  .bento-card-primary p {
+    color: hsl(0 0% 100%) !important;
+  }
+  .bento-card-primary p {
+    color: hsl(0 0% 100% / 0.78) !important;
+  }
+  .bento-card-primary:hover {
+    transform: translateY(-4px) scale(1.005);
+    box-shadow:
+      0 12px 30px hsl(152 62% 20% / 0.25),
+      0 0 0 1px hsl(152 62% 50% / 0.2),
+      inset 0 1px 0 hsl(0 0% 100% / 0.15);
+  }
+
+  /* Warm Gold (Accent) */
+  .bento-card-accent {
+    @apply relative rounded-2xl p-7 overflow-hidden;
+    background: linear-gradient(145deg, hsl(45 80% 55%) 0%, hsl(40 70% 45%) 100%);
+    border: 1px solid hsl(45 80% 65% / 0.3);
+    box-shadow:
+      0 4px 20px hsl(45 60% 30% / 0.15),
+      inset 0 1px 0 hsl(0 0% 100% / 0.15);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .bento-card-accent,
+  .bento-card-accent h3,
+  .bento-card-accent span {
+    color: hsl(0 0% 100%) !important;
+  }
+  .bento-card-accent p {
+    color: hsl(0 0% 100% / 0.82) !important;
+  }
+  .bento-card-accent:hover {
+    transform: translateY(-4px) scale(1.005);
+    box-shadow:
+      0 12px 30px hsl(45 60% 30% / 0.25),
+      0 0 0 1px hsl(45 80% 65% / 0.3),
+      inset 0 1px 0 hsl(0 0% 100% / 0.2);
+  }
+
+  /* Deep Charcoal */
+  .bento-card-dark {
+    @apply relative rounded-2xl p-7 overflow-hidden;
+    background: linear-gradient(145deg, hsl(220 20% 18%) 0%, hsl(220 25% 12%) 100%);
+    border: 1px solid hsl(0 0% 100% / 0.08);
+    box-shadow:
+      0 4px 20px hsl(0 0% 0% / 0.2),
+      inset 0 1px 0 hsl(0 0% 100% / 0.06);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .bento-card-dark,
+  .bento-card-dark h3,
+  .bento-card-dark span {
+    color: hsl(0 0% 100%) !important;
+  }
+  .bento-card-dark p {
+    color: hsl(0 0% 100% / 0.65) !important;
+  }
+  .bento-card-dark:hover {
+    transform: translateY(-4px) scale(1.005);
+    box-shadow:
+      0 12px 30px hsl(0 0% 0% / 0.3),
+      0 0 0 1px hsl(152 62% 42% / 0.15),
+      inset 0 1px 0 hsl(0 0% 100% / 0.08);
+  }
+
+  /* Soft Green Tint (lighter brand variant) */
+  .bento-card-tint {
+    @apply relative rounded-2xl p-7 overflow-hidden bg-card;
+    background: linear-gradient(145deg, hsl(152 40% 96%) 0%, hsl(152 30% 92%) 100%);
+    border: 1px solid hsl(152 40% 85%);
+    box-shadow:
+      0 4px 20px hsl(152 40% 50% / 0.06),
+      inset 0 1px 0 hsl(0 0% 100% / 0.9);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .bento-card-tint:hover {
+    transform: translateY(-4px) scale(1.005);
+    border-color: hsl(152 50% 75%);
+    box-shadow:
+      0 12px 30px hsl(152 40% 50% / 0.1),
+      0 0 0 1px hsl(152 62% 42% / 0.1),
+      inset 0 1px 0 hsl(0 0% 100% / 1);
+  }
+
+  /* Warm Cream (soft gold tint) */
+  .bento-card-warm {
+    @apply relative rounded-2xl p-7 overflow-hidden bg-card;
+    background: linear-gradient(145deg, hsl(42 50% 96%) 0%, hsl(38 40% 92%) 100%);
+    border: 1px solid hsl(42 40% 87%);
+    box-shadow:
+      0 4px 20px hsl(42 40% 50% / 0.06),
+      inset 0 1px 0 hsl(0 0% 100% / 0.9);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .bento-card-warm:hover {
+    transform: translateY(-4px) scale(1.005);
+    border-color: hsl(42 50% 80%);
+    box-shadow:
+      0 12px 30px hsl(42 40% 50% / 0.1),
+      0 0 0 1px hsl(45 80% 58% / 0.1),
+      inset 0 1px 0 hsl(0 0% 100% / 1);
+  }
+
   /* ─── Gold Underline ─── */
   .gold-underline {
     @apply relative;
@@ -326,17 +444,17 @@
 
   /* ─── Micro Grid Overlay ─── */
   .micro-grid {
-    background-size: 40px 40px;
+    background-size: 50px 50px;
     background-image: 
-      linear-gradient(to right, hsl(0 0% 0% / 0.03) 1px, transparent 1px),
-      linear-gradient(to bottom, hsl(0 0% 0% / 0.03) 1px, transparent 1px);
-    mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
-    -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+      linear-gradient(to right, hsl(var(--foreground) / 0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--foreground) / 0.035) 1px, transparent 1px);
+    mask-image: radial-gradient(ellipse at center, black 40%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 100%);
   }
 
   /* ─── Spotlight Vignette Overlay ─── */
   .spotlight-vignette {
-    background: radial-gradient(ellipse at center, transparent 20%, hsl(210 20% 96% / 0.8) 100%);
+    background: radial-gradient(ellipse at center, transparent 20%, hsl(var(--background) / 0.8) 100%);
   }
 
   /* ─── Noise Texture Overlay ─── */
@@ -387,8 +505,8 @@
     content: "";
     position: absolute;
     inset: 0;
-    /* Soft white fade out to edges rather than dark vignette */
-    background: radial-gradient(ellipse at center, transparent 30%, hsl(0 0% 100% / 0.6) 90%, hsl(0 0% 100%) 100%);
+    /* Fade out to ash background instead of pure white */
+    background: radial-gradient(ellipse at center, transparent 30%, hsl(var(--background) / 0.6) 90%, hsl(var(--background)) 100%);
     pointer-events: none;
     z-index: 5;
   }

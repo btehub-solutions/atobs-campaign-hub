@@ -83,11 +83,8 @@ const Hero = () => {
             filter: "grayscale(100%)",
           }}
         />
-        {/* Artistic blended meshes */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-20%,hsl(152_62%_42%/0.12),transparent)] pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_80%_50%,hsl(45_80%_58%/0.08),transparent)] pointer-events-none" />
-        {/* Soft white base overlay */}
-        <div className="absolute inset-0 bg-white/40 backdrop-blur-[1px] pointer-events-none" />
+        {/* Soft ash base overlay — avoids pure white washout */}
+        <div className="absolute inset-0 bg-background/40 backdrop-blur-[1px] pointer-events-none" />
 
         {/* Mobile Candidate Background Layer (Behind text) */}
         <div className="absolute inset-0 lg:hidden pointer-events-none select-none opacity-[0.35]">
@@ -112,14 +109,7 @@ const Hero = () => {
         }}
       />
 
-      {/* Dynamic Ambient orbs for storytelling light bleed */}
-      <div 
-        className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] rounded-full bg-primary/[0.05] blur-[100px] pointer-events-none" 
-      />
-      <div 
-        className="absolute bottom-[-10%] right-[-10%] w-[700px] h-[700px] rounded-full bg-accent/[0.05] blur-[100px] pointer-events-none" 
-      />
-      <div className="absolute top-[40%] left-[30%] w-[400px] h-[400px] rounded-full bg-primary/[0.03] blur-[80px] pointer-events-none" />
+      {/* Dynamic Ambient orbs removed to keep background pure ash */}
 
       {/* ─── Main Content ─── */}
       <motion.div
