@@ -155,7 +155,7 @@ const Hero = () => {
               className="relative pl-5 border-l-2 border-primary/40 mb-8 max-w-lg"
             >
               <p className="text-muted-foreground text-[15px] sm:text-base leading-[1.8] font-light">
-                Building a transformative legacy for Abeokuta South — empowering
+                Building a transformative legacy for Abeokuta South, empowering
                 education, healthcare, and grassroots development across all 15
                 wards. Let us build together.
               </p>
@@ -275,7 +275,7 @@ const Hero = () => {
                     {/* Candidate portrait */}
                     <img
                       src=""
-                      alt="Hon. Lukmon Atobatele — Candidate for Abeokuta South Constituency 1"
+                      alt="Hon. Lukmon Atobatele, Candidate for Abeokuta South Constituency 1"
                       className="w-full h-full object-cover object-center"
                       fetchPriority="high"
                       loading="eager"

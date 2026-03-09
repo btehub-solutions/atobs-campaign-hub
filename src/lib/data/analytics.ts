@@ -111,7 +111,7 @@ export const analyticsMetrics: MetricCard[] = [
     type: "quote",
     span: "col-span-2 sm:col-span-2 row-span-1",
     label: "Hon. Lukmon Atobatele",
-    description: "Results are not just numbers on a page — they are families fed, students empowered, and communities transformed. Every metric here tells a human story.",
+    description: "Results are not just numbers on a page, they are families fed, students empowered, and communities transformed. Every metric here tells a human story.",
   },
   {
     id: "campaign-readiness",

@@ -115,6 +115,7 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
+            whileHover={{ scale: 1.02 }}
             className="col-span-2 row-span-2 bento-card-primary group cursor-pointer flex flex-col items-center justify-center text-center overflow-hidden relative"
           >
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
@@ -135,6 +136,7 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1, duration: 0.5 }}
+            whileHover={{ scale: 1.02 }}
             className="col-span-1 row-span-1 bento-card-warm flex flex-col justify-between group overflow-hidden relative"
           >
             <div className="relative z-10 flex flex-col justify-between h-full p-2">
@@ -154,6 +156,7 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.5 }}
+            whileHover={{ scale: 1.02 }}
             className="col-span-1 row-span-1 bento-card-accent flex flex-col justify-between group"
           >
             <div className="relative z-10 flex flex-col justify-between h-full p-2">
@@ -173,6 +176,7 @@ const About = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.5 }}
+            whileHover={{ scale: 1.02 }}
             className="col-span-2 row-span-1 bento-card-dark group cursor-pointer flex items-center gap-5 sm:gap-6 transition-colors"
           >
             <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 ml-2">
@@ -191,6 +195,7 @@ const About = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4, duration: 0.5 }}
+            whileHover={{ scale: 1.02 }}
             className="col-span-1 row-span-1 bento-card-tint group cursor-pointer flex flex-col items-center justify-center gap-4"
           >
             <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:-translate-y-1 transition-transform duration-300">
@@ -205,6 +210,7 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.5, duration: 0.5 }}
+            whileHover={{ scale: 1.02 }}
             className="col-span-2 sm:col-span-3 lg:col-span-1 row-span-1 bento-card flex flex-col justify-between group bg-primary/[0.04] border border-primary/20 hover:border-primary/40 relative overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.05] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
@@ -231,6 +237,7 @@ const About = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.6, duration: 0.5 }}
+            whileHover={{ scale: 1.02 }}
             className="col-span-2 row-span-1 bento-card-primary group cursor-pointer flex items-center gap-5 sm:gap-6"
           >
             <div className="w-14 h-14 rounded-2xl bg-white/15 flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:-rotate-3 transition-all duration-300 ml-2">

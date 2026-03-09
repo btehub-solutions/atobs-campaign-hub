@@ -46,7 +46,7 @@ const Footer = () => {
                 />
               </div>
               <p className="text-muted-foreground text-[13px] leading-[1.7]">
-                Hon. Lukmon Olajide Atobatele — APC candidate for Abeokuta South Constituency 1, Ogun State House of Assembly.
+                Hon. Lukmon Olajide Atobatele, APC candidate for Abeokuta South Constituency 1, Ogun State House of Assembly.
               </p>
             </div>
 

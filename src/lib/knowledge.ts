@@ -3,9 +3,17 @@ export interface KnowledgeItem {
   keywords: string[];
   content: string;
   actionLink?: { label: string; url: string };
+  componentType?: "Map" | "Stats" | "Video" | "Contact";
 }
 
 export const knowledgeBase: KnowledgeItem[] = [
+  {
+    category: "wards",
+    keywords: ["wards", "map", "tracker", "engagement", "strongholds", "target", "progress"],
+    content: "We are actively monitoring and engaging all 15 wards in Abeokuta South Constituency 1. Here is a live look at our grassroots engagement tracker.",
+    actionLink: { label: "View All Wards", url: "#wards" },
+    componentType: "Map"
+  },
   {
     category: "vision",
     keywords: ["vision", "plan", "future", "manifesto", "promises", "agenda", "ladef 2026", "what will he do"],
@@ -22,19 +30,22 @@ export const knowledgeBase: KnowledgeItem[] = [
     category: "medical",
     keywords: ["medical", "health", "hospital", "surgery", "outreach", "sick", "doctors", "clinic", "wellness"],
     content: "Healthcare is a top priority! LADEF recently organized a massive Medical & Surgical Outreach across all 15 wards of Abeokuta South, providing free consultations, surgeries, and medications to thousands of residents.",
-    actionLink: { label: "Watch Medical Outreach", url: "#media" }
+    actionLink: { label: "Watch Medical Outreach", url: "#media" },
+    componentType: "Video"
   },
   {
     category: "volunteer",
     keywords: ["volunteer", "join", "help", "support", "member", "participate", "contribute"],
     content: "We welcome passionate individuals! You can join the movement to transform Abeokuta South by filling out the Contact form or attending our upcoming ward consultations. Together we can build a better society.",
-    actionLink: { label: "Get Involved", url: "#contact" }
+    actionLink: { label: "Get Involved", url: "#contact" },
+    componentType: "Contact"
   },
   {
     category: "achievements",
     keywords: ["achieve", "done", "records", "track", "projects", "success", "results", "impact", "built", "past"],
     content: "Over the years, Hon. Atobatele's leadership has impacted over 500,000 lives, reaching all wards with a focus on education, healthcare, and infrastructure. Explore our achievements section for the exact data and figures.",
-    actionLink: { label: "View Track Record", url: "#achievements" }
+    actionLink: { label: "View Track Record", url: "#achievements" },
+    componentType: "Stats"
   },
   {
     category: "publications",
@@ -46,7 +57,8 @@ export const knowledgeBase: KnowledgeItem[] = [
     category: "contact",
     keywords: ["contact", "message", "email", "phone", "talk", "reach", "office", "address", "meet"],
     content: "We would love to hear from you directly! The best way to reach Hon. Lukmon Atobatele or the LADEF team is by sending a secure message through our Contact hub.",
-    actionLink: { label: "Go to Contact Me", url: "#contact" }
+    actionLink: { label: "Go to Contact Me", url: "#contact" },
+    componentType: "Contact"
   },
   {
     category: "greeting",

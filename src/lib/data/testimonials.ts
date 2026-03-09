@@ -13,7 +13,7 @@ export const testimonials: Testimonial[] = [
     name: "Chief Mrs. Folake Adeyemi",
     role: "Community Leader",
     ward: "Ake I",
-    quote: "Hon. Atobatele's scholarship program changed the trajectory of my grandchildren's lives. He doesn't just promise — he delivers with compassion and consistency.",
+    quote: "Hon. Atobatele's scholarship program changed the trajectory of my grandchildren's lives. He doesn't just promise, he delivers with compassion and consistency.",
     rating: 5,
   },
   {
@@ -53,7 +53,7 @@ export const testimonials: Testimonial[] = [
     name: "Mr. Kehinde Afolabi",
     role: "School Principal",
     ward: "Ago-Oba",
-    quote: "The educational interventions in our ward — from scholarships to school renovations — have given our students renewed hope. LADEF truly invests in the future.",
+    quote: "The educational interventions in our ward, from scholarships to school renovations, have given our students renewed hope. LADEF truly invests in the future.",
     rating: 5,
   },
 ];

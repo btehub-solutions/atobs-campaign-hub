@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageSquare, X, Send, Sparkles, User, Bot, Loader2, ChevronRight, RefreshCcw } from "lucide-react";
+import { MessageSquare, X, Send, Sparkles, User, Bot, Loader2, ChevronRight, RefreshCcw, Play, Map, Phone, BarChart3 } from "lucide-react";
 
 import { Message, generateAIResponse } from "@/lib/ai-engine";
 
@@ -23,7 +23,39 @@ const AIAssistant = () => {
   const [isInitialLoad, setIsInitialLoad] = useState(true);
   const [messages, setMessages] = useState<Message[]>([INITIAL_MESSAGE]);
   const [inputValue, setInputValue] = useState("");
+  const [currentSection, setCurrentSection] = useState("hero");
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Scroll observer for predictive hints
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ["hero", "about", "achievements", "results", "wards", "media", "gallery", "contact"];
+      for (const section of sections) {
+        const el = document.getElementById(section);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 300 && rect.bottom >= 300) {
+            setCurrentSection(section);
+            break;
+          }
+        }
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const getTooltipHint = () => {
+    switch (currentSection) {
+      case "about": return "Ask about Hon. Lukmon's background";
+      case "achievements": return "See 500,000+ lives impacted";
+      case "results": return "Explore grassroots analytics";
+      case "wards": return "Live look at ward engagements";
+      case "media": return "Watch the latest LADEF videos";
+      case "publications": return "Download the digital library";
+      default: return "Chat with LADEF AI";
+    }
+  };
 
   // Clear initial tooltip after 5 seconds
   useEffect(() => {
@@ -51,8 +83,30 @@ const AIAssistant = () => {
     if (isOpen) scrollToBottom();
   }, [messages, isOpen]);
 
+  // Listen for external analysis requests (2026 deeper functionality)
+  useEffect(() => {
+    const handleQuery = (e: any) => {
+      setIsOpen(true);
+      // We use a small timeout to ensure the state update for isOpen completes if needed
+      // but mostly to feel natural
+      setTimeout(() => handleSend(e.detail), 300);
+    };
+    window.addEventListener('ladef-ai-query', handleQuery);
+    return () => window.removeEventListener('ladef-ai-query', handleQuery);
+  }, []); // handleSend is stable enough here or we can just define it before
+
   const handleSend = async (text: string) => {
     if (!text.trim()) return;
+
+    // Track scroll context for 2026 intelligence
+    let currentContext = "hero";
+    const sections = document.querySelectorAll("section[id]");
+    sections.forEach(sec => {
+      const rect = sec.getBoundingClientRect();
+      if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+        currentContext = sec.id;
+      }
+    });
 
     // Add user message
     const userMsg: Message = { id: Date.now().toString(), role: "user", content: text };
@@ -66,7 +120,7 @@ const AIAssistant = () => {
 
     // Simulate AI thinking and response
     setTimeout(async () => {
-      const aiResponse = await generateAIResponse(text, newContext);
+      const aiResponse = await generateAIResponse(text, newContext, currentContext);
       setMessages(prev => {
         const filtered = prev.filter(m => m.id !== typingMsgId);
         return [...filtered, aiResponse];
@@ -96,16 +150,20 @@ const AIAssistant = () => {
             </button>
             
             {/* Tooltip hint */}
-            <AnimatePresence>
+            <AnimatePresence mode="wait">
               {(isInitialLoad || isHovered) && (
                 <motion.div
-                  initial={{ opacity: 0, y: 5 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 5 }}
-                  transition={{ duration: 0.3 }}
-                  className="absolute -top-12 right-0 whitespace-nowrap rounded-lg bg-card/90 px-3 py-1.5 text-xs font-medium text-foreground shadow-lg backdrop-blur-sm border border-border/40 pointer-events-none"
+                  key={currentSection}
+                  initial={{ opacity: 0, y: 5, scale: 0.9 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 5, scale: 0.9 }}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
+                  className="absolute -top-12 right-0 whitespace-nowrap rounded-lg bg-card/90 px-3 py-1.5 text-xs font-semibold text-primary shadow-lg backdrop-blur-sm border border-primary/20 pointer-events-none"
                 >
-                  Chat with LADEF AI
+                  <div className="flex items-center gap-1.5">
+                    <Sparkles size={10} className="animate-pulse" />
+                    {getTooltipHint()}
+                  </div>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -184,6 +242,74 @@ const AIAssistant = () => {
                     ) : (
                       <div className="flex flex-col gap-3">
                         <p className="leading-relaxed whitespace-pre-wrap">{msg.content}</p>
+                        
+                        {/* 2026 Generative UI Payloads */}
+                        {msg.componentType === 'Video' && (
+                          <div 
+                            onClick={() => { setIsOpen(false); document.querySelector('#media')?.scrollIntoView({ behavior: 'smooth' }); }}
+                            className="mt-2 group relative overflow-hidden rounded-xl border border-primary/20 bg-card cursor-pointer hover:border-primary/50 transition-colors"
+                          >
+                            <div className="aspect-video w-full bg-muted/50 relative">
+                              <div className="absolute inset-0 flex items-center justify-center">
+                                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-[0_0_20px_hsl(152_62%_42%/0.4)] transition-transform group-hover:scale-110">
+                                  <Play size={16} className="ml-0.5" />
+                                </div>
+                              </div>
+                            </div>
+                            <div className="bg-muted/30 p-2.5 flex items-center justify-between">
+                              <span className="text-xs font-semibold text-foreground">Medical Outreach</span>
+                              <span className="text-[10px] text-muted-foreground font-medium uppercase tracking-wider">Play Video</span>
+                            </div>
+                          </div>
+                        )}
+                        
+                        {msg.componentType === 'Stats' && (
+                          <div className="mt-2 grid grid-cols-2 gap-2">
+                            <div className="rounded-xl border border-primary/20 bg-primary/5 p-3 text-center">
+                              <BarChart3 size={16} className="mx-auto mb-1 text-primary opacity-80" />
+                              <div className="text-lg font-bold text-foreground">500k+</div>
+                              <div className="text-[9px] uppercase tracking-wider text-muted-foreground">Lives Impacted</div>
+                            </div>
+                            <div className="rounded-xl border border-primary/20 bg-primary/5 p-3 text-center">
+                              <Map size={16} className="mx-auto mb-1 text-primary opacity-80" />
+                              <div className="text-lg font-bold text-foreground">15</div>
+                              <div className="text-[9px] uppercase tracking-wider text-muted-foreground">Wards Covered</div>
+                            </div>
+                          </div>
+                        )}
+                        
+                        {msg.componentType === 'Contact' && (
+                          <div className="mt-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+                            <div className="mb-2 text-xs font-semibold text-foreground">Direct Lines</div>
+                            <div className="space-y-2">
+                              <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                                <Phone size={12} className="text-primary" /> +234 (0) 800 LADEF
+                              </div>
+                              <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                                <div className="relative flex h-2 w-2">
+                                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                                </div>
+                                Support Team Online
+                              </div>
+                            </div>
+                          </div>
+                        )}
+
+                        {msg.componentType === 'Map' && (
+                           <div className="mt-2 rounded-xl border border-primary/20 bg-primary/5 p-3">
+                             <div className="flex items-center justify-between mb-2">
+                               <div className="flex items-center gap-2">
+                                 <Map size={14} className="text-primary"/>
+                                 <span className="text-xs font-semibold text-foreground">Ward Coverage</span>
+                               </div>
+                               <span className="text-[10px] font-bold text-primary">85%</span>
+                             </div>
+                             <div className="h-2 w-full bg-muted rounded-full overflow-hidden">
+                               <div className="h-full bg-primary w-[85%] rounded-full shadow-[0_0_10px_hsl(152_62%_42%/0.5)]" />
+                             </div>
+                           </div>
+                        )}
                         {msg.action && (
                           <div className="pt-1">
                             <button

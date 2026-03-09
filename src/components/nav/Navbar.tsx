@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X, ArrowUpRight, Search, Command, ArrowRight } from "lucide-react";
+import { knowledgeBase } from "@/lib/knowledge";
 
 const navLinks = [
   { label: "Home", href: "#hero" },
@@ -16,6 +17,40 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
+  const [cmdOpen, setCmdOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        setCmdOpen((open) => !open);
+      }
+    };
+    document.addEventListener("keydown", down);
+    return () => document.removeEventListener("keydown", down);
+  }, []);
+
+  useEffect(() => {
+    if (cmdOpen) {
+      setTimeout(() => inputRef.current?.focus(), 100);
+    } else {
+      setSearchQuery("");
+    }
+  }, [cmdOpen]);
+
+  const allSearchResults = [
+    ...navLinks.map(l => ({ title: l.label, type: 'Page Section', url: l.href })),
+    ...knowledgeBase.filter(k => k.actionLink).map(k => ({ title: k.category.charAt(0).toUpperCase() + k.category.slice(1), type: 'AI Topic', url: k.actionLink!.url }))
+  ];
+  
+  // Remove duplicates by URL
+  const uniqueResults = Array.from(new Map(allSearchResults.map(item => [item.url, item])).values());
+  const filteredResults = uniqueResults.filter(r => 
+    r.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+    r.type.toLowerCase().includes(searchQuery.toLowerCase())
+  ).slice(0, 6);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
@@ -55,6 +90,7 @@ const Navbar = () => {
         });
       }
     }, 50);
+    setCmdOpen(false);
   };
 
   return (
@@ -125,6 +161,18 @@ const Navbar = () => {
               <ArrowUpRight size={13} />
             </button>
 
+            {/* Smart Search Trigger */}
+            <button
+               onClick={() => setCmdOpen(true)}
+               className="hidden md:flex items-center gap-2 px-3 py-2 rounded-lg bg-muted/40 hover:bg-muted/80 text-muted-foreground transition-colors border border-border/50 text-[11px] font-medium"
+            >
+               <Search size={14} />
+               <span>Search</span>
+               <kbd className="hidden lg:inline-flex ml-1 h-5 items-center gap-1 rounded border border-border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground">
+                 <Command size={10} /> K
+               </kbd>
+            </button>
+
             <button
               className="md:hidden w-9 h-9 flex items-center justify-center rounded-lg bg-foreground/[0.06] text-foreground hover:bg-foreground/10 transition-colors"
               onClick={() => setMobileOpen(!mobileOpen)}
@@ -183,6 +231,81 @@ const Navbar = () => {
               </div>
             </div>
           </motion.div>
+        )}
+      </AnimatePresence>
+      {/* Command Center Modal */}
+      <AnimatePresence>
+        {cmdOpen && (
+          <div className="fixed inset-0 z-[100] bg-background/80 backdrop-blur-sm p-4 sm:p-6 pt-[15vh]">
+            <motion.div 
+               initial={{ opacity: 0 }} 
+               animate={{ opacity: 1 }} 
+               exit={{ opacity: 0 }}
+               onClick={() => setCmdOpen(false)}
+               className="absolute inset-0"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: -20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: -20 }}
+              transition={{ ease: "easeOut", duration: 0.2 }}
+              className="relative mx-auto max-w-xl bg-card rounded-2xl shadow-2xl border border-border/50 overflow-hidden flex flex-col"
+            >
+              <div className="flex items-center px-4 py-3 border-b border-border/30">
+                <Search size={18} className="text-muted-foreground shrink-0 mr-3" />
+                <input
+                  ref={inputRef}
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search manifesto, achievements, wards..."
+                  className="flex-1 bg-transparent border-none outline-none text-foreground placeholder:text-muted-foreground text-sm sm:text-base mr-3"
+                />
+                <kbd className="hidden sm:inline-flex h-5 items-center gap-1 rounded border border-border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground mr-1">
+                  ESC
+                </kbd>
+                <button onClick={() => setCmdOpen(false)} className="p-1 rounded-md hover:bg-muted text-muted-foreground"><X size={16}/></button>
+              </div>
+
+              <div className="max-h-[300px] overflow-y-auto p-2 scrollbar-thin scrollbar-thumb-border/50">
+                {filteredResults.length === 0 ? (
+                  <div className="py-8 text-center text-sm text-muted-foreground">
+                    No results found for "{searchQuery}"
+                  </div>
+                ) : (
+                  <div className="flex flex-col gap-1">
+                    <div className="px-3 py-2 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
+                      Suggested Results
+                    </div>
+                    {filteredResults.map((result) => (
+                      <button
+                        key={result.url + result.title}
+                        onClick={() => scrollTo(result.url)}
+                        className="flex items-center justify-between w-full px-3 py-3 sm:py-2.5 rounded-xl hover:bg-primary/5 hover:text-primary transition-colors text-left group"
+                      >
+                         <div className="flex flex-col">
+                           <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">{result.title}</span>
+                           <span className="text-[10px] text-muted-foreground">{result.type}</span>
+                         </div>
+                         <ArrowRight size={14} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-primary" />
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+              <div className="bg-muted/30 p-2 sm:px-4 flex items-center justify-between border-t border-border/30">
+                <div className="flex items-center gap-1.5">
+                  <div className="flex h-4 w-4 shrink-0 items-center justify-center overflow-hidden rounded-[2px] border border-primary/30 bg-primary/10">
+                    <img src="/ladef-logo-trimmed.png" alt="LADEF" className="h-full w-full object-cover" />
+                  </div>
+                  <span className="text-[10px] sm:text-xs text-muted-foreground font-medium">LADEF Smart Input</span>
+                </div>
+                <div className="hidden sm:flex text-[10px] text-muted-foreground items-center gap-2">
+                   <span>Use <kbd className="border border-border/50 rounded px-1 ml-0.5">↑</kbd> <kbd className="border border-border/50 rounded px-1">↓</kbd> to navigate</span>
+                   <span><kbd className="border border-border/50 rounded px-1">Enter</kbd> to select</span>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         )}
       </AnimatePresence>
     </motion.nav>

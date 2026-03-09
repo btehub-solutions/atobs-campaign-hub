@@ -63,12 +63,15 @@ const StatCard = ({ card, index }: { card: MetricCard; index: number }) => {
         // @ts-ignore
         cardRef.current = node;
       }}
+      onClick={() => {
+        window.dispatchEvent(new CustomEvent('ladef-ai-query', { detail: `Tell me more about the ${card.label} impact.` }));
+      }}
       onMouseMove={handleMouseMove}
       initial={{ opacity: 0, y: 25, scale: 0.97 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ delay: index * 0.05, duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className={`${card.span} ${variant} group relative overflow-hidden`}
+      className={`${card.span} ${variant} group relative overflow-hidden cursor-pointer`}
     >
       {!dark && (
         <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
@@ -109,7 +112,11 @@ const ProgressCard = ({ card, index }: { card: MetricCard; index: number }) => {
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ delay: index * 0.05, duration: 0.5 }}
-      className={`${card.span} bento-card-warm group`}
+      whileHover={{ scale: 1.02 }}
+      onClick={() => {
+        window.dispatchEvent(new CustomEvent('ladef-ai-query', { detail: `How are the ${card.label} progressing?` }));
+      }}
+      className={`${card.span} bento-card-warm group cursor-pointer`}
     >
       <div className="relative z-10 text-center">
         {Icon && (
@@ -152,7 +159,8 @@ const HighlightCard = ({ card, index }: { card: MetricCard; index: number }) => 
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ delay: index * 0.05, duration: 0.5 }}
-      className={`${card.span} bento-card-dark group`}
+      whileHover={{ scale: 1.02 }}
+            className={`${card.span} bento-card-dark group`}
     >
       <div className="relative z-10 flex flex-col h-full justify-center text-center">
         <p className="text-[10px] font-semibold uppercase tracking-[0.2em] mb-4">{card.label}</p>
@@ -174,7 +182,8 @@ const ChartCard = ({ card, index }: { card: MetricCard; index: number }) => {
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ delay: index * 0.05, duration: 0.5 }}
-      className={`${card.span} bento-card group`}
+      whileHover={{ scale: 1.02 }}
+            className={`${card.span} bento-card group`}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
       <div className="relative z-10 h-full flex flex-col">
@@ -239,7 +248,8 @@ const QuoteCard = ({ card, index }: { card: MetricCard; index: number }) => (
     whileInView={{ opacity: 1, y: 0, scale: 1 }}
     viewport={{ once: true, margin: "-50px" }}
     transition={{ delay: index * 0.05, duration: 0.5 }}
-    className={`${card.span} bento-card-primary overflow-hidden`}
+    whileHover={{ scale: 1.02 }}
+            className={`${card.span} bento-card-primary overflow-hidden`}
   >
     <Quote className="absolute top-6 right-6 text-white/10" size={56} />
     <div className="relative z-10">

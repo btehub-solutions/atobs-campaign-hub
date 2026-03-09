@@ -8,9 +8,10 @@ export interface Message {
   content: string;
   isTyping?: boolean;
   action?: { label: string; url: string };
+  componentType?: "Map" | "Stats" | "Video" | "Contact" | "Links";
 }
 
-export const generateAIResponse = async (text: string, history: Message[]): Promise<Message> => {
+export const generateAIResponse = async (text: string, history: Message[], currentContext?: string): Promise<Message> => {
   const lowerText = text.toLowerCase();
   
   // 1. Check for Contact intent first - Proactive guidance
@@ -36,8 +37,20 @@ export const generateAIResponse = async (text: string, history: Message[]): Prom
           id: (Date.now() + 1).toString(),
           role: "ai",
           content: "It sounds like you want to get in touch. We value your feedback and would love to hear from you directly! Please use the 'Contact Me' section to send us a secure message, and the LADEF team will respond promptly.",
-          action: { label: "Go to Contact Me", url: "#contact" }
+          action: { label: "Go to Contact Me", url: "#contact" },
+          componentType: "Contact"
       };
+  }
+
+  // Handle Context-based predictive responses
+  if (lowerText.includes("where am i") || lowerText.includes("current section")) {
+    if (currentContext && currentContext !== "hero") {
+        return {
+            id: (Date.now() + 1).toString(),
+            role: "ai",
+            content: `I see you're currently looking at the ${currentContext.toUpperCase()} section. Would you like me to highlight any specific metrics or details from this part of the campaign?`
+        };
+    }
   }
 
   // 3. Find Best Semantic Match
@@ -70,11 +83,13 @@ export const generateAIResponse = async (text: string, history: Message[]): Prom
   // 4. Formulate Response
   let responseContent = "";
   let actionItem = undefined;
+  let componentType = undefined;
 
   // Threshold for matching
   if (bestMatch && highestScore > 3) {
     responseContent = bestMatch.content;
     actionItem = bestMatch.actionLink;
+    componentType = bestMatch.componentType as any;
   } else {
     // Fallback response with Proactive Contact Routing
     const contextPrompts = [
@@ -90,6 +105,7 @@ export const generateAIResponse = async (text: string, history: Message[]): Prom
     id: (Date.now() + 1).toString(),
     role: "ai",
     content: responseContent,
-    action: actionItem
+    action: actionItem,
+    componentType
   };
 };
